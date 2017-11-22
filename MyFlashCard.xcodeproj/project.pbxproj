@@ -14,6 +14,11 @@
 		BB3F683D1FC61AE50074E27F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F683B1FC61AE50074E27F /* LaunchScreen.storyboard */; };
 		BB3F68481FC61AE50074E27F /* MyFlashCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68471FC61AE50074E27F /* MyFlashCardTests.swift */; };
 		BB3F68531FC61AE50074E27F /* MyFlashCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68521FC61AE50074E27F /* MyFlashCardUITests.swift */; };
+		BB3F68611FC61BA90074E27F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68601FC61BA90074E27F /* Card.swift */; };
+		BB3F68631FC61BB60074E27F /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68621FC61BB60074E27F /* Deck.swift */; };
+		BB3F68651FC61BC40074E27F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68641FC61BC40074E27F /* User.swift */; };
+		BB3F68671FC61BDA0074E27F /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68661FC61BDA0074E27F /* Class.swift */; };
+		BB3F68691FC61F7A0074E27F /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68681FC61F7A0074E27F /* Assignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		BB3F684E1FC61AE50074E27F /* MyFlashCardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFlashCardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3F68521FC61AE50074E27F /* MyFlashCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFlashCardUITests.swift; sourceTree = "<group>"; };
 		BB3F68541FC61AE50074E27F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB3F68601FC61BA90074E27F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		BB3F68621FC61BB60074E27F /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		BB3F68641FC61BC40074E27F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BB3F68661FC61BDA0074E27F /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
+		BB3F68681FC61F7A0074E27F /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,11 @@
 				BB3F68391FC61AE50074E27F /* Assets.xcassets */,
 				BB3F683B1FC61AE50074E27F /* LaunchScreen.storyboard */,
 				BB3F683E1FC61AE50074E27F /* Info.plist */,
+				BB3F68601FC61BA90074E27F /* Card.swift */,
+				BB3F68621FC61BB60074E27F /* Deck.swift */,
+				BB3F68641FC61BC40074E27F /* User.swift */,
+				BB3F68661FC61BDA0074E27F /* Class.swift */,
+				BB3F68681FC61F7A0074E27F /* Assignment.swift */,
 			);
 			path = MyFlashCard;
 			sourceTree = "<group>";
@@ -259,7 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB3F68671FC61BDA0074E27F /* Class.swift in Sources */,
+				BB3F68691FC61F7A0074E27F /* Assignment.swift in Sources */,
+				BB3F68631FC61BB60074E27F /* Deck.swift in Sources */,
 				BB3F68351FC61AE50074E27F /* ViewController.swift in Sources */,
+				BB3F68611FC61BA90074E27F /* Card.swift in Sources */,
+				BB3F68651FC61BC40074E27F /* User.swift in Sources */,
 				BB3F68331FC61AE50074E27F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
