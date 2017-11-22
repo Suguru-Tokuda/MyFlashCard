@@ -8,7 +8,7 @@ public class Card {
     private var deckID: String;
     private var marked: Bool;
     
-    // default constructor
+    // MARK: - default constructor
     public init() {
         question = "";
         answer = "";
@@ -37,7 +37,7 @@ public class Card {
         }
     }
     
-    // getters & setters
+    // MARK: - getters & setters
     public func getQuestion() -> String {
         return question;
     }
