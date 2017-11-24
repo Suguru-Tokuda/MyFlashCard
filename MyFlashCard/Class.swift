@@ -50,6 +50,7 @@ public class Class {
     public func getDecks() -> [Deck] {
         return decks
     }
+    
     public func setDekcs(decks: [Deck]) {
         self.decks = decks
     }
