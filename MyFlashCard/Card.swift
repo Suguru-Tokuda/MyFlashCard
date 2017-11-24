@@ -17,6 +17,7 @@ public class Card {
         marked = false
     }
     
+    
     public init(question: String, answer: String, cardID: String, deckID: String, marked: Bool) {
         self.question = question
         self.answer = answer
