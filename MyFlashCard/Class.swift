@@ -54,4 +54,8 @@ public class Class {
         self.decks = decks
     }
     
+    public func meaningLessMethod() {
+        
+    }
+    
 }
