@@ -24,6 +24,7 @@
 		BB46C2511FC635ED006E2481 /* RecentlyStudiedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2501FC635ED006E2481 /* RecentlyStudiedViewController.swift */; };
 		BB46C2531FC6367A006E2481 /* MyDecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */; };
 		BB46C2551FC63D64006E2481 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2541FC63D64006E2481 /* DownloadViewController.swift */; };
+		BB902EF51FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF31FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		BB46C2501FC635ED006E2481 /* RecentlyStudiedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyStudiedViewController.swift; sourceTree = "<group>"; };
 		BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDecksViewController.swift; sourceTree = "<group>"; };
 		BB46C2541FC63D64006E2481 /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		BB902EF41FCA15CC0097E7A0 /* MyFlashCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFlashCard.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		BB3F68261FC61AE50074E27F = {
 			isa = PBXGroup;
 			children = (
+				BB902EF31FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld */,
 				BB3F68311FC61AE50074E27F /* MyFlashCard */,
 				BB3F68461FC61AE50074E27F /* MyFlashCardTests */,
 				BB3F68511FC61AE50074E27F /* MyFlashCardUITests */,
@@ -297,6 +300,7 @@
 				BB3F68351FC61AE50074E27F /* ViewController.swift in Sources */,
 				BB3F68611FC61BA90074E27F /* Card.swift in Sources */,
 				BB3F68651FC61BC40074E27F /* User.swift in Sources */,
+				BB902EF51FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld in Sources */,
 				BB46C2531FC6367A006E2481 /* MyDecksViewController.swift in Sources */,
 				BB4546D91FC8C95B00F8F568 /* CardStore.swift in Sources */,
 				BB46C2551FC63D64006E2481 /* DownloadViewController.swift in Sources */,
@@ -594,6 +598,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BB902EF31FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BB902EF41FCA15CC0097E7A0 /* MyFlashCard.xcdatamodel */,
+			);
+			currentVersion = BB902EF41FCA15CC0097E7A0 /* MyFlashCard.xcdatamodel */;
+			path = MyFlashCard.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BB3F68271FC61AE50074E27F /* Project object */;
 }
