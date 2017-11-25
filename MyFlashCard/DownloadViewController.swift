@@ -4,6 +4,7 @@ class DownloadViewController: UIViewController {
     
     // "!" means I know this optional variable definitely has a value, so let me use it directly.
     var store: CardStore!
+    var cards: [Card]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +22,13 @@ class DownloadViewController: UIViewController {
         store.fetchCardsForDeckID(deckid: "3") { (cardsResult) in
             switch cardsResult {
             case let .success(cards):
+                self.cards = cards
+                print(self.cards.count)
                 print("Successfully found \(cards.count) cards.")
             case let .failure(error):
                 print("Error fetching cards: \(error)")
             }
         }
-        
     }
     
     

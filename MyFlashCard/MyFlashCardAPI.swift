@@ -70,7 +70,7 @@ struct MyFlashCardAPI {
                 return nil
         }
         
-        let card = Card(question: question, answer: answer, cardID: id, deckID: deckid, priority: priority, marked: false)
+        let card = Card(question: question, answer: answer, cardID: String(id), deckID: String(deckid), priority: priority, marked: false)
         return card
     }
     

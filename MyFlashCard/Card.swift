@@ -4,8 +4,8 @@ public class Card {
     
     private var question: String
     private var answer: String
-    private var cardID: Int
-    private var deckID: Int
+    private var cardID: String
+    private var deckID: String
     private var priority: Int
     private var marked: Bool
     
@@ -13,13 +13,13 @@ public class Card {
     public init() {
         question = ""
         answer = ""
-        cardID = 0
-        deckID = 0
+        cardID = ""
+        deckID = ""
         priority = 0
         marked = false
     }
     
-    public init(question: String, answer: String, cardID: Int, deckID: Int, priority: Int, marked: Bool) {
+    public init(question: String, answer: String, cardID: String, deckID: String, priority: Int, marked: Bool) {
         self.question = question
         self.answer = answer
         self.cardID = cardID
@@ -57,19 +57,19 @@ public class Card {
         self.answer = answer
     }
     
-    public func getCardID() -> Int {
+    public func getCardID() -> String {
         return self.cardID
     }
     
-    public func setCardID(cardID: Int) {
+    public func setCardID(cardID: String) {
         self.cardID = cardID
     }
     
-    public func getDeckID() -> Int {
+    public func getDeckID() -> String {
         return self.deckID
     }
     
-    public func setDeckID(deckID: Int) {
+    public func setDeckID(deckID: String) {
         self.deckID = deckID
     }
     
