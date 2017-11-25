@@ -43,13 +43,10 @@ struct MyFlashCardAPI {
             var finalCards = [Card]()
             for cardJSON in jsonDictionary as! [AnyObject] {
                 let cardJSONString = cardJSON as! [String:Any]
-                print(cardJSONString)
                 if let card = card(fromJSON: cardJSONString) {
                     finalCards.append(card)
                 }
             }
-            
-            print(finalCards.count)
             
             if finalCards.isEmpty && !cardArray.isEmpty {
                 // We weren't able to parse any of the photos
@@ -74,7 +71,6 @@ struct MyFlashCardAPI {
         }
         
         let card = Card(question: question, answer: answer, cardID: id, deckID: deckid, priority: priority, marked: false)
-        
         return card
     }
     
