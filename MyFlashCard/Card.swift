@@ -4,24 +4,27 @@ public class Card {
     
     private var question: String
     private var answer: String
-    private var cardID: String
-    private var deckID: String
+    private var cardID: Int
+    private var deckID: Int
+    private var priority: Int
     private var marked: Bool
     
     // MARK: - default constructor
     public init() {
         question = ""
         answer = ""
-        cardID = ""
-        deckID = ""
+        cardID = 0
+        deckID = 0
+        priority = 0
         marked = false
     }
     
-    public init(question: String, answer: String, cardID: String, deckID: String, marked: Bool) {
+    public init(question: String, answer: String, cardID: Int, deckID: Int, priority: Int, marked: Bool) {
         self.question = question
         self.answer = answer
         self.cardID = cardID
         self.deckID = deckID
+        self.priority = priority
         self.marked = marked
     }
     
@@ -54,20 +57,28 @@ public class Card {
         self.answer = answer
     }
     
-    public func getCardID() -> String {
+    public func getCardID() -> Int {
         return self.cardID
     }
     
-    public func setCardID(cardID: String) {
+    public func setCardID(cardID: Int) {
         self.cardID = cardID
     }
     
-    public func getDeckID() -> String {
+    public func getDeckID() -> Int {
         return self.deckID
     }
     
-    public func setDeckID(deckID: String) {
+    public func setDeckID(deckID: Int) {
         self.deckID = deckID
+    }
+    
+    public func getPriority() -> Int {
+        return self.priority
+    }
+    
+    public func setPriority(priority: Int) {
+        self.priority = priority
     }
     
     

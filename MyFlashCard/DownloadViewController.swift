@@ -1,24 +1,34 @@
-//
-//  DownloadViewController.swift
-//  MyFlashCard
-//
-//  Created by Suguru on 11/22/17.
-//  Copyright © 2017 Suguru. All rights reserved.
-//
-
 import UIKit
 
 class DownloadViewController: UIViewController {
+    
+    // "!" means I know this optional variable definitely has a value, so let me use it directly.
+    var store: CardStore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.store = appDelegate.store
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func downloadButton(_ sender: Any) {
+
+        print("download button clicked")
+        store.fetchAllCards {
+            (cardsResult) -> Void in
+            switch cardsResult {
+            case let .success(cards):
+                print("Successfully found \(cards.count) cards.")
+            case let .failure(error):
+                print("Error fetching cards: \(error)")
+            }
+        }
+        
     }
     
 

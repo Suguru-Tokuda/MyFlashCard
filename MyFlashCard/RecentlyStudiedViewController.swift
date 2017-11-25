@@ -8,8 +8,6 @@ class RecentlyStudiedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        url = appDelegate.baseURL
         // Do any additional setup after loading the view, typically from a nib.
     }
     
