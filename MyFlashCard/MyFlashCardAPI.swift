@@ -31,25 +31,27 @@ struct MyFlashCardAPI {
     
     static func cards(fromJSON data: Data) -> CardsResult {
         do {
-//            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-            let jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as AnyObject
-            print(jsonObject)
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
             guard
-            let jsonDictionary = jsonObject as? [AnyHashable:Any],
-            let cards = jsonDictionary["cards"] as? [String:Any],
-            let cardsArray = cards["card"] as? [[String:Any]] else {
+                let jsonDictionary = jsonObject as? AnyObject
+                else {
                     // The JSON strcuture doesn't match our expectaions
                     return .failure(MyFlashCardError.invalidJSONData)
             }
+            let cardArray = jsonDictionary as! [AnyObject]
+
             var finalCards = [Card]()
-            
-            for cardJSON in cardsArray {
-                if let card = card(fromJSON: cardJSON) {
+            for cardJSON in jsonDictionary as! [AnyObject] {
+                let cardJSONString = cardJSON as! [String:Any]
+                print(cardJSONString)
+                if let card = card(fromJSON: cardJSONString) {
                     finalCards.append(card)
                 }
             }
             
-            if finalCards.isEmpty && !cardsArray.isEmpty {
+            print(finalCards.count)
+            
+            if finalCards.isEmpty && !cardArray.isEmpty {
                 // We weren't able to parse any of the photos
                 // Maybe the JSON format for photos has changed
                 return .failure(MyFlashCardError.invalidJSONData)
@@ -62,20 +64,18 @@ struct MyFlashCardAPI {
     }
     
     private static func card(fromJSON json: [String : Any]) -> Card? {
-        print("func card func card func card func card")
-        print("func card func card func card func card")
-        print("func card func card func card func card")
-        print("func card func card func card func card")
         guard
-            let question = json["quesiton"] as? String,
+            let question = json["question"] as? String,
             let answer = json["answer"] as? String,
             let deckid = json["deckid"] as? Int,
             let id = json["id"] as? Int,
             let priority = json["priority"] as? Int else {
-                // Don't have enough information to construct a Card
                 return nil
         }
-        return Card(question: question, answer: answer, cardID: id, deckID: deckid, priority: priority, marked: false)
+        
+        let card = Card(question: question, answer: answer, cardID: id, deckID: deckid, priority: priority, marked: false)
+        
+        return card
     }
     
 }

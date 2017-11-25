@@ -7,6 +7,16 @@ enum CardsResult {
 
 public class CardStore {
     
+    var parameter: String!
+    
+    public func getParameter() -> String {
+        return parameter
+    }
+    
+    public func setParameter(paramter: String) {
+        self.parameter = paramter
+    }
+    
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
@@ -33,163 +43,99 @@ public class CardStore {
         task.resume()
     }
     // MARK: - Cards
-    func fetchCardsForDeckID(deckID: String) {
-        let url = MyFlashCardAPI.myFlashCardURL(method: .cardsForDeckid, parameter: deckID)
+    func fetchCardsForDeckID(deckid: String, completion: @escaping (CardsResult) -> Void) {
+        let url = MyFlashCardAPI.myFlashCardURL(method: .cardsForDeckid, parameter: deckid)
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching cards: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processCardRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
     
-    func fetchCardsForDeckname(deckName: String) {
-        let url = MyFlashCardAPI.myFlashCardURL(method: .cardsForDeckname, parameter: deckName)
+    func fetchCardsForDeckname(deckname: String, completion: @escaping (CardsResult) -> Void) {
+        let url = MyFlashCardAPI.myFlashCardURL(method: .cardsForDeckname, parameter: deckname)
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching cards: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processCardRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
     
     // MARK: - Decks
-    func fetchDeckForDeckid(deckID: String) {
-        let url = MyFlashCardAPI.myFlashCardURL(method: .deckForID, parameter: deckID)
+    func fetchDeckForDeckid(deckid: String, completion: @escaping (CardsResult) -> Void) {
+        let url = MyFlashCardAPI.myFlashCardURL(method: .deckForID, parameter: deckid)
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching cards: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processCardRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
     
-    func fetchDecksForClassid(classid: String) {
+    func fetchDecksForClassid(classid: String, completion: @escaping (CardsResult) -> Void) {
         let url = MyFlashCardAPI.myFlashCardURL(method: .dekcsForClassid, parameter: classid)
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching cards: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processCardRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
     
-    func fetchDecksForClassnumber(classnumber: String) {
+    func fetchDecksForClassnumber(classnumber: String, completion: @escaping (CardsResult) -> Void) {
         let url = MyFlashCardAPI.myFlashCardURL(method: .decksForClassnumber, parameter: classnumber)
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching cards: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processCardRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
     
-    func fetchDecksForClassname(classname: String) {
+    func fetchDecksForClassname(classname: String, completion: @escaping (CardsResult) -> Void) {
         let url = MyFlashCardAPI.myFlashCardURL(method: .decksForClassname, parameter: classname)
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching cards: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processCardRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
     
-    func fetchDecksForUsername(userName: String) {
-        let url = MyFlashCardAPI.myFlashCardURL(method: .decksForUsername, parameter: userName)
+    func fetchDecksForUsername(username: String, completion: @escaping (CardsResult) -> Void) {
+        let url = MyFlashCardAPI.myFlashCardURL(method: .decksForUsername, parameter: username)
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching cards: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processCardRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
     
-    func fetchDecksForKeyword(keyword: String) {
+    func fetchDecksForKeyword(keyword: String, completion: @escaping (CardsResult) -> Void) {
         let url = MyFlashCardAPI.myFlashCardURL(method: .decksForKeyword, parameter: keyword)
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-            } else if let requestError = error {
-                print("Error fetching cards: \(requestError)")
-            } else {
-                print("Unexpected error with the request")
-            }
+            let result = self.processCardRequest(data: data, error: error)
+            completion(result)
         }
         task.resume()
     }
