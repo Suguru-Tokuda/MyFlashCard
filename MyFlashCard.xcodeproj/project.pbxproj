@@ -14,8 +14,6 @@
 		BB3F683D1FC61AE50074E27F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F683B1FC61AE50074E27F /* LaunchScreen.storyboard */; };
 		BB3F68481FC61AE50074E27F /* MyFlashCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68471FC61AE50074E27F /* MyFlashCardTests.swift */; };
 		BB3F68531FC61AE50074E27F /* MyFlashCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68521FC61AE50074E27F /* MyFlashCardUITests.swift */; };
-		BB3F68611FC61BA90074E27F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68601FC61BA90074E27F /* Card.swift */; };
-		BB3F68631FC61BB60074E27F /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68621FC61BB60074E27F /* Deck.swift */; };
 		BB3F68651FC61BC40074E27F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68641FC61BC40074E27F /* User.swift */; };
 		BB3F68671FC61BDA0074E27F /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68661FC61BDA0074E27F /* Class.swift */; };
 		BB3F68691FC61F7A0074E27F /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68681FC61F7A0074E27F /* Assignment.swift */; };
@@ -25,6 +23,10 @@
 		BB46C2531FC6367A006E2481 /* MyDecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */; };
 		BB46C2551FC63D64006E2481 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2541FC63D64006E2481 /* DownloadViewController.swift */; };
 		BB902EF51FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF31FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld */; };
+		BB902EFA1FCA1B650097E7A0 /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */; };
+		BB902EFB1FCA1B650097E7A0 /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */; };
+		BB902EFC1FCA1B650097E7A0 /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */; };
+		BB902EFD1FCA1B650097E7A0 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF91FCA1B650097E7A0 /* Card+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +60,6 @@
 		BB3F684E1FC61AE50074E27F /* MyFlashCardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFlashCardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3F68521FC61AE50074E27F /* MyFlashCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFlashCardUITests.swift; sourceTree = "<group>"; };
 		BB3F68541FC61AE50074E27F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB3F68601FC61BA90074E27F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		BB3F68621FC61BB60074E27F /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		BB3F68641FC61BC40074E27F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BB3F68661FC61BDA0074E27F /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		BB3F68681FC61F7A0074E27F /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
@@ -69,6 +69,10 @@
 		BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDecksViewController.swift; sourceTree = "<group>"; };
 		BB46C2541FC63D64006E2481 /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		BB902EF41FCA15CC0097E7A0 /* MyFlashCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFlashCard.xcdatamodel; sourceTree = "<group>"; };
+		BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BB902EF91FCA1B650097E7A0 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,10 @@
 		BB3F68261FC61AE50074E27F = {
 			isa = PBXGroup;
 			children = (
+				BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */,
+				BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */,
+				BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */,
+				BB902EF91FCA1B650097E7A0 /* Card+CoreDataProperties.swift */,
 				BB902EF31FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld */,
 				BB3F68311FC61AE50074E27F /* MyFlashCard */,
 				BB3F68461FC61AE50074E27F /* MyFlashCardTests */,
@@ -126,8 +134,6 @@
 				BB3F68391FC61AE50074E27F /* Assets.xcassets */,
 				BB3F683B1FC61AE50074E27F /* LaunchScreen.storyboard */,
 				BB3F683E1FC61AE50074E27F /* Info.plist */,
-				BB3F68601FC61BA90074E27F /* Card.swift */,
-				BB3F68621FC61BB60074E27F /* Deck.swift */,
 				BB3F68641FC61BC40074E27F /* User.swift */,
 				BB3F68661FC61BDA0074E27F /* Class.swift */,
 				BB3F68681FC61F7A0074E27F /* Assignment.swift */,
@@ -295,15 +301,17 @@
 				BB3F68671FC61BDA0074E27F /* Class.swift in Sources */,
 				BB3F68691FC61F7A0074E27F /* Assignment.swift in Sources */,
 				BB46C2511FC635ED006E2481 /* RecentlyStudiedViewController.swift in Sources */,
+				BB902EFB1FCA1B650097E7A0 /* Deck+CoreDataProperties.swift in Sources */,
 				BB4546D71FC8B9DD00F8F568 /* MyFlashCardAPI.swift in Sources */,
-				BB3F68631FC61BB60074E27F /* Deck.swift in Sources */,
 				BB3F68351FC61AE50074E27F /* ViewController.swift in Sources */,
-				BB3F68611FC61BA90074E27F /* Card.swift in Sources */,
+				BB902EFD1FCA1B650097E7A0 /* Card+CoreDataProperties.swift in Sources */,
 				BB3F68651FC61BC40074E27F /* User.swift in Sources */,
+				BB902EFC1FCA1B650097E7A0 /* Card+CoreDataClass.swift in Sources */,
 				BB902EF51FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld in Sources */,
 				BB46C2531FC6367A006E2481 /* MyDecksViewController.swift in Sources */,
 				BB4546D91FC8C95B00F8F568 /* CardStore.swift in Sources */,
 				BB46C2551FC63D64006E2481 /* DownloadViewController.swift in Sources */,
+				BB902EFA1FCA1B650097E7A0 /* Deck+CoreDataClass.swift in Sources */,
 				BB3F68331FC61AE50074E27F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
