@@ -1,4 +1,5 @@
-import Foundation
+import UIKit
+import CoreData
 
 enum CardsResult {
     case success([Card])
@@ -6,6 +7,16 @@ enum CardsResult {
 }
 
 public class CardStore {
+    
+    let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MyFlashCard")
+        container.loadPersistentStores(completionHandler: { (description, error) in
+            if let error = error {
+                print("Error setting up Core Data (\(error)).")
+            }
+        })
+        return container
+    }()
     
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
