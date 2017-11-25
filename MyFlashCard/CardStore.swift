@@ -7,8 +7,6 @@ enum CardsResult {
 
 public class CardStore {
     
-    var parameter: String!
-    
     public func getParameter() -> String {
         return parameter
     }
