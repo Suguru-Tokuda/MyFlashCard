@@ -7,14 +7,6 @@ enum CardsResult {
 
 public class CardStore {
     
-    public func getParameter() -> String {
-        return parameter
-    }
-    
-    public func setParameter(paramter: String) {
-        self.parameter = paramter
-    }
-    
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
