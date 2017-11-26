@@ -12,10 +12,11 @@
     <entity name="Deck" representedClassName="Deck" syncable="YES">
         <attribute name="deckName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="deck" inverseEntity="Card" syncable="YES"/>
     </entity>
     <elements>
         <element name="Card" positionX="-54" positionY="-9" width="128" height="150"/>
-        <element name="Deck" positionX="-36" positionY="54" width="128" height="90"/>
+        <element name="Deck" positionX="-36" positionY="54" width="128" height="105"/>
     </elements>
 </model>

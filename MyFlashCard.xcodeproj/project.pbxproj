@@ -23,9 +23,11 @@
 		BB46C2511FC635ED006E2481 /* RecentlyStudiedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2501FC635ED006E2481 /* RecentlyStudiedViewController.swift */; };
 		BB46C2531FC6367A006E2481 /* MyDecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */; };
 		BB46C2551FC63D64006E2481 /* ClassInfoDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2541FC63D64006E2481 /* ClassInfoDownloadViewController.swift */; };
+		BB530F5E1FCA72DA00CBA242 /* CardInfoDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB530F5D1FCA72D900CBA242 /* CardInfoDownloadViewController.swift */; };
+		BB530F601FCA731700CBA242 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB530F5F1FCA731700CBA242 /* DeckStore.swift */; };
+		BB530F631FCA7B4C00CBA242 /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB530F611FCA7B4C00CBA242 /* Deck+CoreDataClass.swift */; };
+		BB530F641FCA7B4C00CBA242 /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB530F621FCA7B4C00CBA242 /* Deck+CoreDataProperties.swift */; };
 		BB902EF51FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF31FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld */; };
-		BB902EFA1FCA1B650097E7A0 /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */; };
-		BB902EFB1FCA1B650097E7A0 /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */; };
 		BB902EFC1FCA1B650097E7A0 /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */; };
 		BBB1F10E1FCA61AB00B40731 /* SchoolClassStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1F10D1FCA61AB00B40731 /* SchoolClassStore.swift */; };
 		BBB1F1101FCA6AEA00B40731 /* DecksInfoDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1F10F1FCA6AEA00B40731 /* DecksInfoDownloadViewController.swift */; };
@@ -71,9 +73,11 @@
 		BB46C2501FC635ED006E2481 /* RecentlyStudiedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyStudiedViewController.swift; sourceTree = "<group>"; };
 		BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDecksViewController.swift; sourceTree = "<group>"; };
 		BB46C2541FC63D64006E2481 /* ClassInfoDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassInfoDownloadViewController.swift; sourceTree = "<group>"; };
+		BB530F5D1FCA72D900CBA242 /* CardInfoDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoDownloadViewController.swift; sourceTree = "<group>"; };
+		BB530F5F1FCA731700CBA242 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStore.swift; sourceTree = "<group>"; };
+		BB530F611FCA7B4C00CBA242 /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BB530F621FCA7B4C00CBA242 /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BB902EF41FCA15CC0097E7A0 /* MyFlashCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFlashCard.xcdatamodel; sourceTree = "<group>"; };
-		BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BBB1F10D1FCA61AB00B40731 /* SchoolClassStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolClassStore.swift; sourceTree = "<group>"; };
 		BBB1F10F1FCA6AEA00B40731 /* DecksInfoDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksInfoDownloadViewController.swift; sourceTree = "<group>"; };
@@ -107,9 +111,9 @@
 		BB3F68261FC61AE50074E27F = {
 			isa = PBXGroup;
 			children = (
+				BB530F611FCA7B4C00CBA242 /* Deck+CoreDataClass.swift */,
+				BB530F621FCA7B4C00CBA242 /* Deck+CoreDataProperties.swift */,
 				BB366E111FCA3E0D00D87D88 /* Card+CoreDataProperties.swift */,
-				BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */,
-				BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */,
 				BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */,
 				BB902EF31FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld */,
 				BB3F68311FC61AE50074E27F /* MyFlashCard */,
@@ -145,9 +149,11 @@
 				BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */,
 				BB46C2541FC63D64006E2481 /* ClassInfoDownloadViewController.swift */,
 				BBB1F10F1FCA6AEA00B40731 /* DecksInfoDownloadViewController.swift */,
+				BB530F5D1FCA72D900CBA242 /* CardInfoDownloadViewController.swift */,
 				BB4546D61FC8B9DD00F8F568 /* MyFlashCardAPI.swift */,
 				BB4546D81FC8C95B00F8F568 /* CardStore.swift */,
 				BBB1F10D1FCA61AB00B40731 /* SchoolClassStore.swift */,
+				BB530F5F1FCA731700CBA242 /* DeckStore.swift */,
 			);
 			path = MyFlashCard;
 			sourceTree = "<group>";
@@ -307,7 +313,6 @@
 				BB3F68671FC61BDA0074E27F /* Class.swift in Sources */,
 				BB3F68691FC61F7A0074E27F /* Assignment.swift in Sources */,
 				BB46C2511FC635ED006E2481 /* RecentlyStudiedViewController.swift in Sources */,
-				BB902EFB1FCA1B650097E7A0 /* Deck+CoreDataProperties.swift in Sources */,
 				BB4546D71FC8B9DD00F8F568 /* MyFlashCardAPI.swift in Sources */,
 				BB3F68351FC61AE50074E27F /* ViewController.swift in Sources */,
 				BB366E121FCA3E0D00D87D88 /* Card+CoreDataProperties.swift in Sources */,
@@ -315,10 +320,13 @@
 				BB902EFC1FCA1B650097E7A0 /* Card+CoreDataClass.swift in Sources */,
 				BB902EF51FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld in Sources */,
 				BB46C2531FC6367A006E2481 /* MyDecksViewController.swift in Sources */,
+				BB530F631FCA7B4C00CBA242 /* Deck+CoreDataClass.swift in Sources */,
 				BB4546D91FC8C95B00F8F568 /* CardStore.swift in Sources */,
 				BBB1F1101FCA6AEA00B40731 /* DecksInfoDownloadViewController.swift in Sources */,
 				BB46C2551FC63D64006E2481 /* ClassInfoDownloadViewController.swift in Sources */,
-				BB902EFA1FCA1B650097E7A0 /* Deck+CoreDataClass.swift in Sources */,
+				BB530F5E1FCA72DA00CBA242 /* CardInfoDownloadViewController.swift in Sources */,
+				BB530F601FCA731700CBA242 /* DeckStore.swift in Sources */,
+				BB530F641FCA7B4C00CBA242 /* Deck+CoreDataProperties.swift in Sources */,
 				BBB1F10E1FCA61AB00B40731 /* SchoolClassStore.swift in Sources */,
 				BB3F68331FC61AE50074E27F /* AppDelegate.swift in Sources */,
 			);

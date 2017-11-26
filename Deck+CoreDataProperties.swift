@@ -19,6 +19,7 @@ extension Deck {
 
     @NSManaged public var deckName: String?
     @NSManaged public var id: String?
+    @NSManaged public var userid: String?
     @NSManaged public var cards: Card?
 
 }

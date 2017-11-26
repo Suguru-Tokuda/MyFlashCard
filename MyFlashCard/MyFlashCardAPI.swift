@@ -40,7 +40,7 @@ struct MyFlashCardAPI {
                     return .failure(MyFlashCardError.invalidJSONData)
             }
             let cardArray = jsonDictionary as! [AnyObject]
-
+            
             var finalCards = [Card]()
             for cardJSON in jsonDictionary as! [AnyObject] {
                 let cardJSONString = cardJSON as! [String:Any]
@@ -73,12 +73,35 @@ struct MyFlashCardAPI {
             
             var finalClasses = [SchoolClass]()
             for classJSON in classesArray {
-                let classJSONString = classJSON as! [String:Any]
+                let classJSONString = classJSON as! [String : Any]
                 if let schoolClass = schoolClass(fromJSON: classJSONString) {
                     finalClasses.append(schoolClass)
                 }
             }
             return .success(finalClasses)
+        } catch let error {
+            return .failure(error)
+        }
+    }
+    
+    static func decks(fromJSON data: Data, into context: NSManagedObjectContext) -> DecksResult {
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+            guard
+                let jsonDictionary = jsonObject as? AnyObject
+                else {
+                    // The JSON structure doesn't match our expectations
+                    return .failure(MyFlashCardError.invalidJSONData)
+            }
+            let decksArray = jsonDictionary as! [AnyObject]
+            var finalDecks = [Deck]()
+            for deckJSON in decksArray {
+                let deckJSONString = deckJSON as! [String : Any]
+                if let deck = deck(fromJSON: deckJSONString, into: context) {
+                    finalDecks.append(deck)
+                }
+            }
+            return .success(finalDecks)
         } catch let error {
             return .failure(error)
         }
@@ -105,7 +128,7 @@ struct MyFlashCardAPI {
         }
         
         
-//        let card = Card(question: question, answer: answer, cardID: String(id), deckID: String(deckid), priority: priority, marked: false)
+        //        let card = Card(question: question, answer: answer, cardID: String(id), deckID: String(deckid), priority: priority, marked: false)
         return card
     }
     
@@ -115,9 +138,27 @@ struct MyFlashCardAPI {
             let classnumber = json["classnumber"] as? String,
             let classid = json["id"] as? Int else {
                 return nil
-            }
+        }
         let schoolClass = SchoolClass(classNum: classnumber, className: classname, classID: String(classid))
         return schoolClass
+    }
+    
+    private static func deck(fromJSON json: [String : Any], into context: NSManagedObjectContext) -> Deck? {
+        guard
+            let deckname = json["deckname"] as? String,
+            let id = json["id"] as? Int,
+            let userid = json["userid"] as? Int else {
+                return nil
+            }
+        
+        var deck: Deck!
+        context.performAndWait {
+            deck = Deck(context: context)
+            deck.id = String(id)
+            deck.deckName = deckname
+            deck.userid = String(userid)
         }
+        return deck
+    }
     
 }
