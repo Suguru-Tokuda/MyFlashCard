@@ -1,25 +1,22 @@
 import Foundation
 
-public class Class {
+public class SchoolClass {
     
     private var classNum: String;
     private var className: String;
     private var classID: String;
-    private var decks = [Deck]();
     
     // MARK: - initiallizers
     public init() {
         classNum = ""
         className = ""
         classID = ""
-        decks = [Deck]()
     }
     
-    public init(classNum: String, className: String, classID: String, decks: [Deck]) {
+    public init(classNum: String, className: String, classID: String) {
         self.classNum = classNum
         self.className = className
         self.classID = classID
-        self.decks = decks
     }
     
     // MARK: - getters & setters
@@ -45,14 +42,6 @@ public class Class {
     
     public func setClassID(classID: String) {
         self.classNum = classID
-    }
-    
-    public func getDecks() -> [Deck] {
-        return decks
-    }
-    
-    public func setDekcs(decks: [Deck]) {
-        self.decks = decks
     }
     
 }

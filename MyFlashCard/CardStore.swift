@@ -60,7 +60,9 @@ public class CardStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             let result = self.processCardRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }

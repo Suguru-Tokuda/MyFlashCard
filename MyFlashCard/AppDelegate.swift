@@ -12,11 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var store: CardStore!
+    var cardStore: CardStore!
+    var schoolClassStore: SchoolClassStore!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        store = CardStore()
-        
+        cardStore = CardStore()
+        schoolClassStore = SchoolClassStore()
         return true
     }
 

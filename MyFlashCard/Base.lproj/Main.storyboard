@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Download Dekcs-->
+        <!--Download-->
         <scene sceneID="p9p-pc-UN5">
             <objects>
-                <viewController storyboardIdentifier="DownloadViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Bc-el-rF4" customClass="DownloadViewController" customModule="MyFlashCard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DownloadViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Bc-el-rF4" customClass="ClassInfoDownloadViewController" customModule="MyFlashCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZnE-45-AeC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,15 +26,76 @@
                                     <action selector="downloadButton:" destination="4Bc-el-rF4" eventType="touchUpInside" id="O4P-yA-d6N"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CS-2H-zKJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Classes" id="XGh-CU-2fA"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aR7-PV-bXu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Download Dekcs" id="Dcg-9S-lca"/>
+                    <tabBarItem key="tabBarItem" title="Download" id="Dcg-9S-lca"/>
+                    <connections>
+                        <segue destination="cBj-2V-F4Y" kind="show" id="HER-5Z-XvL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oT4-hQ-XYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1556" y="445"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eZA-Ds-P8D">
+            <objects>
+                <viewController id="cBj-2V-F4Y" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HE4-7m-KLv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A2F-nT-eTz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Decks" id="7aQ-4e-qb0"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jtO-BZ-Wf5"/>
+                    </view>
+                    <connections>
+                        <segue destination="DrQ-o2-SD6" kind="show" id="Xa7-Mi-jJP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H0s-Qr-G4T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-766" y="445"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8Sc-S2-LsG">
+            <objects>
+                <viewController id="DrQ-o2-SD6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tbF-az-ltT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m23-LW-Js2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Cards" id="msr-hT-yeU"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="CPR-wE-2as"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Izy-8c-2Ie" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14" y="445"/>
         </scene>
         <!--Recently Studied-->
         <scene sceneID="I4h-e7-Rx4">

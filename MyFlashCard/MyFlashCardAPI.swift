@@ -54,8 +54,31 @@ struct MyFlashCardAPI {
                 // Maybe the JSON format for photos has changed
                 return .failure(MyFlashCardError.invalidJSONData)
             }
-            
             return .success(finalCards)
+        } catch let error {
+            return .failure(error)
+        }
+    }
+    
+    static func classes(fromJSON data: Data) -> SchoolClassesResult {
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+            guard
+                let jsonDictionary = jsonObject as? AnyObject
+                else {
+                    // The JSON structure doesn't match our expectations
+                    return .failure(MyFlashCardError.invalidJSONData)
+            }
+            let classesArray = jsonDictionary as! [AnyObject]
+            
+            var finalClasses = [SchoolClass]()
+            for classJSON in classesArray {
+                let classJSONString = classJSON as! [String:Any]
+                if let schoolClass = schoolClass(fromJSON: classJSONString) {
+                    finalClasses.append(schoolClass)
+                }
+            }
+            return .success(finalClasses)
         } catch let error {
             return .failure(error)
         }
@@ -85,5 +108,16 @@ struct MyFlashCardAPI {
 //        let card = Card(question: question, answer: answer, cardID: String(id), deckID: String(deckid), priority: priority, marked: false)
         return card
     }
+    
+    private static func schoolClass(fromJSON json: [String : Any]) -> SchoolClass? {
+        guard
+            let classname = json["classname"] as? String,
+            let classnumber = json["classnumber"] as? String,
+            let classid = json["id"] as? Int else {
+                return nil
+            }
+        let schoolClass = SchoolClass(classNum: classnumber, className: classname, classID: String(classid))
+        return schoolClass
+        }
     
 }
