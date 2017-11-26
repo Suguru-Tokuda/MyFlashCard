@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB366E121FCA3E0D00D87D88 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB366E111FCA3E0D00D87D88 /* Card+CoreDataProperties.swift */; };
 		BB3F68331FC61AE50074E27F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68321FC61AE50074E27F /* AppDelegate.swift */; };
 		BB3F68351FC61AE50074E27F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68341FC61AE50074E27F /* ViewController.swift */; };
 		BB3F68381FC61AE50074E27F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F68361FC61AE50074E27F /* Main.storyboard */; };
@@ -26,7 +27,6 @@
 		BB902EFA1FCA1B650097E7A0 /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */; };
 		BB902EFB1FCA1B650097E7A0 /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */; };
 		BB902EFC1FCA1B650097E7A0 /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */; };
-		BB902EFD1FCA1B650097E7A0 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB902EF91FCA1B650097E7A0 /* Card+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB366E111FCA3E0D00D87D88 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BB3F682F1FC61AE50074E27F /* MyFlashCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFlashCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3F68321FC61AE50074E27F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB3F68341FC61AE50074E27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BB902EF91FCA1B650097E7A0 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +103,10 @@
 		BB3F68261FC61AE50074E27F = {
 			isa = PBXGroup;
 			children = (
+				BB366E111FCA3E0D00D87D88 /* Card+CoreDataProperties.swift */,
 				BB902EF61FCA1B650097E7A0 /* Deck+CoreDataClass.swift */,
 				BB902EF71FCA1B650097E7A0 /* Deck+CoreDataProperties.swift */,
 				BB902EF81FCA1B650097E7A0 /* Card+CoreDataClass.swift */,
-				BB902EF91FCA1B650097E7A0 /* Card+CoreDataProperties.swift */,
 				BB902EF31FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld */,
 				BB3F68311FC61AE50074E27F /* MyFlashCard */,
 				BB3F68461FC61AE50074E27F /* MyFlashCardTests */,
@@ -304,7 +304,7 @@
 				BB902EFB1FCA1B650097E7A0 /* Deck+CoreDataProperties.swift in Sources */,
 				BB4546D71FC8B9DD00F8F568 /* MyFlashCardAPI.swift in Sources */,
 				BB3F68351FC61AE50074E27F /* ViewController.swift in Sources */,
-				BB902EFD1FCA1B650097E7A0 /* Card+CoreDataProperties.swift in Sources */,
+				BB366E121FCA3E0D00D87D88 /* Card+CoreDataProperties.swift in Sources */,
 				BB3F68651FC61BC40074E27F /* User.swift in Sources */,
 				BB902EFC1FCA1B650097E7A0 /* Card+CoreDataClass.swift in Sources */,
 				BB902EF51FCA15CC0097E7A0 /* MyFlashCard.xcdatamodeld in Sources */,

@@ -17,12 +17,12 @@ extension Card {
         return NSFetchRequest<Card>(entityName: "Card")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var question: String?
     @NSManaged public var answer: String?
     @NSManaged public var deckID: String?
-    @NSManaged public var priority: Int32
+    @NSManaged public var id: String?
     @NSManaged public var marked: Bool
+    @NSManaged public var priority: Int16
+    @NSManaged public var question: String?
     @NSManaged public var deck: Deck?
 
 }

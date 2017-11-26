@@ -27,7 +27,7 @@ public class CardStore {
         guard let jsonData = data else {
             return .failure(error!)
         }
-        return MyFlashCardAPI.cards(fromJSON: jsonData)
+        return MyFlashCardAPI.cards(fromJSON: jsonData, into: persistentContainer.viewContext)
     }
     
     // MARK: - REST calls
@@ -38,8 +38,17 @@ public class CardStore {
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            let result = self.processCardRequest(data: data, error: error)
-            completion(result)
+            var result = self.processCardRequest(data: data, error: error)
+            if case .success = result {
+                do {
+                    try self.persistentContainer.viewContext.save()
+                } catch let error {
+                    result = .failure(error)
+                }
+            }
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }

@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyFlashCard/MyFlashCardAPI.swift"
-            timestampString = "533335017.586991"
+            timestampString = "533348538.909465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "card(fromJSON:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyFlashCard/MyFlashCardAPI.swift"
-            timestampString = "533335017.587461"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "card(fromJSON:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "card(fromJSON:into:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

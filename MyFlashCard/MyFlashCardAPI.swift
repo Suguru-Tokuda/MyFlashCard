@@ -1,4 +1,5 @@
 import Foundation
+import CoreData
 
 enum Method: String {
     case allCards = ".cards/"
@@ -29,7 +30,7 @@ struct MyFlashCardAPI {
         return url!
     }
     
-    static func cards(fromJSON data: Data) -> CardsResult {
+    static func cards(fromJSON data: Data, into context: NSManagedObjectContext) -> CardsResult {
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
             guard
@@ -43,7 +44,7 @@ struct MyFlashCardAPI {
             var finalCards = [Card]()
             for cardJSON in jsonDictionary as! [AnyObject] {
                 let cardJSONString = cardJSON as! [String:Any]
-                if let card = card(fromJSON: cardJSONString) {
+                if let card = card(fromJSON: cardJSONString, into: context) {
                     finalCards.append(card)
                 }
             }
@@ -60,7 +61,7 @@ struct MyFlashCardAPI {
         }
     }
     
-    private static func card(fromJSON json: [String : Any]) -> Card? {
+    private static func card(fromJSON json: [String : Any], into context: NSManagedObjectContext) -> Card? {
         guard
             let question = json["question"] as? String,
             let answer = json["answer"] as? String,
@@ -70,7 +71,18 @@ struct MyFlashCardAPI {
                 return nil
         }
         
-        let card = Card(question: question, answer: answer, cardID: String(id), deckID: String(deckid), priority: priority, marked: false)
+        var card: Card!
+        context.performAndWait {
+            card = Card(context: context)
+            card.answer = answer
+            card.question = question
+            card.deckID = String(deckid)
+            card.id = String(id)
+            card.priority = Int16(priority)
+        }
+        
+        
+//        let card = Card(question: question, answer: answer, cardID: String(id), deckID: String(deckid), priority: priority, marked: false)
         return card
     }
     
