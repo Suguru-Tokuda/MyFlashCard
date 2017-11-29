@@ -1,22 +1,39 @@
 import UIKit
 
-class DecksInfoDownloadViewController: UIViewController {
+class DecksInfoDownloadViewController: UITableViewController {
+    
+    var decks: [Deck]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // will send a deckID
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        decks = appDelegate.decks
+        return decks.count;
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Create an instance of UITableViewCell, with default appearance
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
+
+        // Set the text on the cell with the description of the item
+        // that is at the nth index of items, where n = row this cell
+        // will appear in on the tableview
+        let deck = decks[indexPath.row]
+        
+        cell.detailTextLabel?.text
+//        return cell
     }
 
 

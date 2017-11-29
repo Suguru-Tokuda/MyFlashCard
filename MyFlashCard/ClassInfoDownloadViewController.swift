@@ -1,9 +1,10 @@
-import UIKit
+			import UIKit
 
-class ClassInfoDownloadViewController: UIViewController {
+class ClassInfoDownloadViewController: UITableViewController {
     
     // "!" means I know this optional variable definitely has a value, so let me use it directly.
     var cardStore: CardStore!
+    var deckStore: DeckStore!
     var schoolClassStore: SchoolClassStore!
     var cards: [Card]!
     var schoolClasses: [SchoolClass]!
@@ -13,6 +14,51 @@ class ClassInfoDownloadViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.cardStore = appDelegate.cardStore
         self.schoolClassStore = appDelegate.schoolClassStore
+        
+        // Get the height of the status bar
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        
+        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        schoolClasses = appDelegate.schoolClasses
+        return schoolClasses.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Create an instance of UITableViewCell, with default appearance
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
+        
+        // Set the text on the cell with the description of the item
+        // that is at the nth index of items, where n = row this cell
+        // will appear in on the tableview
+        let schoolClass = schoolClasses[indexPath.row]
+        cell.textLabel?.text = schoolClass.getClassNum()
+        cell.detailTextLabel?.text = schoolClass.getClassName()
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.deckStore = appDelegate.deckStore
+        let classnumber = self.schoolClasses[indexPath.row].getClassNum()
+        
+        deckStore.fetchDeckForClassnumber(completion: { (dekcsResult) in
+            switch dekcsResult {
+            case let .success(decks):
+                // assign a response decks to a global variable in appDelegate
+                appDelegate.decks = decks
+                print("Successfully found \(decks.count) decks")
+            case let . failure(error):
+                print("Error fetching decks: \(error)")
+                
+            }
+        }, classnumber: classnumber)
+        performSegue(withIdentifier: "mySegue", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -20,23 +66,14 @@ class ClassInfoDownloadViewController: UIViewController {
     }
     
     
-    @IBAction func downloadButton(_ sender: Any) {
-        print("download button clicked")
-        schoolClassStore.fetchAllClasses { (schoolClassesResult) in
-            switch schoolClassesResult {
-                case let .success(schoolClasses):
-                self.schoolClasses = schoolClasses
-                print("Successfully found \(schoolClasses.count) classes.")
-            case let .failure(error):
-                print("Error fetching classes: \(error)")
-            }
-        }
-    }
+    
     
     // will send a classID or something equivalent
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//        if segue.identifier == "mySegue" {
+//            let vc = segue.destination as! DecksInfoDownloadViewController
+//        }
+        
     }
     
 }

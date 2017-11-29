@@ -13,11 +13,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var cardStore: CardStore!
+    var deckStore: DeckStore!
     var schoolClassStore: SchoolClassStore!
+    var schoolClasses: [SchoolClass]!
+    var decks: [Deck]!
+    var cards: [Card]!
+    var index: Int?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         cardStore = CardStore()
+        deckStore = DeckStore()
         schoolClassStore = SchoolClassStore()
+        schoolClassStore.fetchAllClassesOrderByClassnum { (schoolClassesResult) in
+            switch schoolClassesResult {
+            case let .success(schoolClasses):
+                self.schoolClasses = schoolClasses
+                print("Successfully found \(schoolClasses.count) classes.")
+            case let .failure(error):
+                print("Error fetching classes: \(error)")
+            }
+        }
+        index = 0
         return true
     }
 

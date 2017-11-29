@@ -152,6 +152,4 @@ public class CardStore {
         task.resume()
     }
     
-    
-    
 }

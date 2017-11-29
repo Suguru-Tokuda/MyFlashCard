@@ -44,4 +44,20 @@ public class DeckStore {
         task.resume()
     }
     
+    func fetchDeckForClassnumber(completion: @escaping (DecksResult) -> Void, classnumber: String) {
+        let url = MyFlashCardAPI.myFlashCardURL(method: .decksForClassnumber, parameter: classnumber)
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        let task = session.dataTask(with: request) {
+            (data, response, error) -> Void in
+            let result = self.processDeckRequest(data: data, error: error)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    
 }
