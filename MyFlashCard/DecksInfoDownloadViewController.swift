@@ -32,7 +32,7 @@ class DecksInfoDownloadViewController: UITableViewController {
         // will appear in on the tableview
         let deck = decks[indexPath.row]
         
-        cell.detailTextLabel?.text
+        return cell
 //        return cell
     }
 
