@@ -1,4 +1,4 @@
-			import UIKit
+import UIKit
 
 class ClassInfoDownloadViewController: UITableViewController {
     
@@ -8,6 +8,7 @@ class ClassInfoDownloadViewController: UITableViewController {
     var schoolClassStore: SchoolClassStore!
     var cards: [Card]!
     var schoolClasses: [SchoolClass]!
+    var backButtonTitle : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +17,11 @@ class ClassInfoDownloadViewController: UITableViewController {
         self.schoolClassStore = appDelegate.schoolClassStore
         
         // Get the height of the status bar
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        
-        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
+//        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+//        
+//        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
+//        tableView.contentInset = insets
+//        tableView.scrollIndicatorInsets = insets
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,6 +47,7 @@ class ClassInfoDownloadViewController: UITableViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.deckStore = appDelegate.deckStore
         let classnumber = self.schoolClasses[indexPath.row].getClassNum()
+        self.backButtonTitle = "<" + classnumber
         
         deckStore.fetchDeckForClassnumber(completion: { (dekcsResult) in
             switch dekcsResult {
@@ -53,26 +55,26 @@ class ClassInfoDownloadViewController: UITableViewController {
                 // assign a response decks to a global variable in appDelegate
                 appDelegate.decks = decks
                 print("Successfully found \(decks.count) decks")
+                self.performSegue(withIdentifier: "fromClassToDeck", sender: self)
             case let . failure(error):
                 print("Error fetching decks: \(error)")
                 
             }
         }, classnumber: classnumber)
-        performSegue(withIdentifier: "mySegue", sender: nil)
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
-    
     // will send a classID or something equivalent
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "mySegue" {
-//            let vc = segue.destination as! DecksInfoDownloadViewController
-//        }
+        
+        if segue.identifier == "fromClassToDeck" {
+            var vc : DecksInfoDownloadViewController = segue.destination as! DecksInfoDownloadViewController
+            vc.backButtonString = backButtonTitle
+        }
         
     }
     
