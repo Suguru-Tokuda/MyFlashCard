@@ -61,7 +61,6 @@ class ClassInfoDownloadViewController: UITableViewController {
                 
             }
         }, classnumber: classnumber)
-
     }
     
     override func didReceiveMemoryWarning() {

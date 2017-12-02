@@ -5,6 +5,7 @@ class DecksInfoDownloadViewController: UITableViewController {
     var decks: [Deck]!
     var backButtonString : String!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var cardStore : CardStore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,27 @@ class DecksInfoDownloadViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         decks = appDelegate.decks
         return decks.count;
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.cardStore = appDelegate.cardStore
+        
+        let deckid = self.decks[indexPath.row].id!
+        
+        cardStore.fetchCardsForDeckID(deckid: deckid) { (cardsResult) in
+            switch cardsResult {
+            case let .success(cards):
+                appDelegate.cards = cards
+                print("Successfully found \(cards.count) cards")
+                self.performSegue(withIdentifier: "fromDecksToCards", sender: self)
+            case let .failure(error):
+                print("Error fetching cards: \(error)")
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
