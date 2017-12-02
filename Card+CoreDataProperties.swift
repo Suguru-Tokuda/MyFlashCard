@@ -2,7 +2,7 @@
 //  Card+CoreDataProperties.swift
 //  MyFlashCard
 //
-//  Created by Suguru on 11/25/17.
+//  Created by Suguru on 12/2/17.
 //  Copyright © 2017 Suguru. All rights reserved.
 //
 //
@@ -18,7 +18,7 @@ extension Card {
     }
 
     @NSManaged public var answer: String?
-    @NSManaged public var deckID: String?
+    @NSManaged public var deckid: String?
     @NSManaged public var id: String?
     @NSManaged public var marked: Bool
     @NSManaged public var priority: Int16

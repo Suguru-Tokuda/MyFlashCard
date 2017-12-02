@@ -62,7 +62,7 @@ struct MyFlashCardAPI {
         }
     }
     
-    static func classes(fromJSON data: Data) -> SchoolClassesResult {
+    static func classes(fromJSON data: Data, into context: NSManagedObjectContext) -> SchoolClassesResult {
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
             guard
@@ -76,7 +76,7 @@ struct MyFlashCardAPI {
             var finalClasses = [SchoolClass]()
             for classJSON in classesArray {
                 let classJSONString = classJSON as! [String : Any]
-                if let schoolClass = schoolClass(fromJSON: classJSONString) {
+                if let schoolClass = schoolClass(fromJSON: classJSONString, into: context) {
                     finalClasses.append(schoolClass)
                 }
             }
@@ -119,12 +119,24 @@ struct MyFlashCardAPI {
                 return nil
         }
         
+        let fetchRequest: NSFetchRequest<Card> = Card.fetchRequest()
+        let predicate = NSPredicate(format: "\(#keyPath(Card.id)) == \(id)")
+        fetchRequest.predicate = predicate
+        
+        var fetchedCard: [Card]?
+        context.performAndWait {
+            fetchedCard = try? fetchRequest.execute()
+        }
+        if let existingCard = fetchedCard?.first {
+            return existingCard
+        }
+        
         var card: Card!
         context.performAndWait {
             card = Card(context: context)
             card.answer = answer
             card.question = question
-            card.deckID = String(deckid)
+            card.deckid = String(deckid)
             card.id = String(id)
             card.priority = Int16(priority)
         }
@@ -134,14 +146,34 @@ struct MyFlashCardAPI {
         return card
     }
     
-    private static func schoolClass(fromJSON json: [String : Any]) -> SchoolClass? {
+    private static func schoolClass(fromJSON json: [String : Any], into context: NSManagedObjectContext) -> SchoolClass? {
         guard
             let classname = json["classname"] as? String,
             let classnumber = json["classnumber"] as? String,
             let classid = json["id"] as? Int else {
                 return nil
         }
-        let schoolClass = SchoolClass(classNum: classnumber, className: classname, classID: String(classid))
+        
+        let fetcRequest: NSFetchRequest<SchoolClass> = SchoolClass.fetchRequest()
+        let predicate = NSPredicate(format: "\(#keyPath(SchoolClass.classid)) == \(classid)")
+        fetcRequest.predicate = predicate
+        
+        var fetchedClasses: [SchoolClass]?
+        context.performAndWait {
+            fetchedClasses = try? fetcRequest.execute()
+        }
+        if let existingClass = fetchedClasses?.first {
+            return existingClass
+        }
+        
+        var schoolClass: SchoolClass!
+        context.performAndWait {
+            schoolClass = SchoolClass(context: context)
+            schoolClass.name = classname
+            schoolClass.classid = String(classid)
+            schoolClass.classNum = classnumber
+        }
+        
         return schoolClass
     }
     
@@ -152,6 +184,18 @@ struct MyFlashCardAPI {
             let userid = json["userid"] as? Int else {
                 return nil
             }
+        
+        let fetchRequest: NSFetchRequest<Deck> = Deck.fetchRequest()
+        let predicate = NSPredicate(format: "\(#keyPath(Deck.id)) == \(id)")
+        fetchRequest.predicate = predicate
+        
+        var fetchedDecks: [Deck]?
+        context.performAndWait {
+            fetchedDecks = try? fetchRequest.execute()
+        }
+        if let existingDeck = fetchedDecks?.first {
+            return existingDeck
+        }
         
         var deck: Deck!
         context.performAndWait {

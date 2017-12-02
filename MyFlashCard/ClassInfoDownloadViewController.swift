@@ -38,16 +38,15 @@ class ClassInfoDownloadViewController: UITableViewController {
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableview
         let schoolClass = schoolClasses[indexPath.row]
-        cell.textLabel?.text = schoolClass.getClassNum()
-        cell.detailTextLabel?.text = schoolClass.getClassName()
+        cell.textLabel?.text = schoolClass.classNum
+        cell.detailTextLabel?.text = schoolClass.name
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.deckStore = appDelegate.deckStore
-        let classnumber = self.schoolClasses[indexPath.row].getClassNum()
-        self.backButtonTitle = "<" + classnumber
+        let classnumber = self.schoolClasses[indexPath.row].classNum
         
         deckStore.fetchDeckForClassnumber(completion: { (dekcsResult) in
             switch dekcsResult {
@@ -60,7 +59,7 @@ class ClassInfoDownloadViewController: UITableViewController {
                 print("Error fetching decks: \(error)")
                 
             }
-        }, classnumber: classnumber)
+        }, classnumber: classnumber!)
     }
     
     override func didReceiveMemoryWarning() {

@@ -1,5 +1,5 @@
 //
-//  Card+CoreDataClass.swift
+//  SchoolClass+CoreDataClass.swift
 //  MyFlashCard
 //
 //  Created by Suguru on 12/2/17.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Card)
-public class Card: NSManagedObject {
+@objc(SchoolClass)
+public class SchoolClass: NSManagedObject {
 
 }

@@ -6,6 +6,7 @@ class DecksInfoDownloadViewController: UITableViewController {
     var backButtonString : String!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var cardStore : CardStore!
+    var deckName : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +18,10 @@ class DecksInfoDownloadViewController: UITableViewController {
     
     // will send a deckID
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromDecksToCards" {
+            let vc = segue.destination as! CardInfoDownloadViewController
+            vc.deckName = self.deckName
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,8 +35,9 @@ class DecksInfoDownloadViewController: UITableViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.cardStore = appDelegate.cardStore
-        
-        let deckid = self.decks[indexPath.row].id!
+        let deck = self.decks[indexPath.row]
+        let deckid = deck.id!
+        self.deckName = deck.deckName
         
         cardStore.fetchCardsForDeckID(deckid: deckid) { (cardsResult) in
             switch cardsResult {

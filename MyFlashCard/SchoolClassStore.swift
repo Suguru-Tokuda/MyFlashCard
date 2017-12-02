@@ -1,4 +1,5 @@
 import UIKit
+import CoreData
 
 enum SchoolClassesResult {
     case success([SchoolClass])
@@ -6,6 +7,16 @@ enum SchoolClassesResult {
 }
 
 public class SchoolClassStore {
+    
+    let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MyFlashCard")
+        container.loadPersistentStores(completionHandler: { (description, error) in
+            if let error = error {
+                print("Error setting up Core Data (\(error)).")
+            }
+        })
+        return container
+    }()
     
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -16,7 +27,7 @@ public class SchoolClassStore {
         guard let jsonData = data else {
             return .failure(error!)
         }
-        return MyFlashCardAPI.classes(fromJSON: jsonData)
+        return MyFlashCardAPI.classes(fromJSON: jsonData, into: self.persistentContainer.viewContext)
     }
     
     func fetchAllClasses(completion: @escaping (SchoolClassesResult) -> Void) {
@@ -45,6 +56,21 @@ public class SchoolClassStore {
             }
         }
         task.resume()
+    }
+    
+    // MARK: - a method to get exisitng classes
+    func fetchAllExistingClasses(completion: @escaping (SchoolClassesResult) -> Void) {
+        let viewContext = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<SchoolClass> = SchoolClass.fetchRequest()
+        
+        viewContext.perform {
+            do {
+                let allClasses = try viewContext.fetch(fetchRequest)
+                completion(.success(allClasses))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
     
     

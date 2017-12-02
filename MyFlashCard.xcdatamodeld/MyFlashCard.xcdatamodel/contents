@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1003" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Card" representedClassName="Card" syncable="YES">
         <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="deckID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deckid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="marked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -15,8 +15,14 @@
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="deck" inverseEntity="Card" syncable="YES"/>
     </entity>
+    <entity name="SchoolClass" representedClassName="SchoolClass" syncable="YES">
+        <attribute name="classid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="classNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Card" positionX="-54" positionY="-9" width="128" height="150"/>
         <element name="Deck" positionX="-36" positionY="54" width="128" height="105"/>
+        <element name="SchoolClass" positionX="-45" positionY="63" width="128" height="90"/>
     </elements>
 </model>
