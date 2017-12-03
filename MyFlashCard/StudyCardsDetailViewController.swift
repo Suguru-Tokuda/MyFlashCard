@@ -35,7 +35,10 @@ class StudyCardsDetailViewController: UIViewController, UITableViewDataSource, U
         self.performSegue(withIdentifier: "cardSummarySeg", sender: self)
     }
     
-    @IBOutlet weak var studyButton: UIButton!
+    @IBAction func studyButtonClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: "studySeg", sender: self)
+    }
+    
     
     // MARK: - Navigation
 

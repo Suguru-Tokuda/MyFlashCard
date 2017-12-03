@@ -73,6 +73,18 @@ public class SchoolClassStore {
         }
     }
     
+    func fetchAllExistingClassesAsynchronously() -> [SchoolClass] {
+        let viewContext = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<SchoolClass> = SchoolClass.fetchRequest()
+        var retVal: [SchoolClass]!
+        do {
+            retVal = try viewContext.fetch(fetchRequest) as [SchoolClass]
+        } catch let error as NSError {
+            print("Error in fetching: \(error)")
+        }
+        return retVal
+    }
+    
     //MAKR: - Delete methods
     func deleteUnnecessarySchoolClasses(scoolClasses: [SchoolClass], targetid: String) {
         let viewContext = self.persistentContainer.viewContext

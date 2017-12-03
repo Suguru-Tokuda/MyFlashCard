@@ -327,67 +327,6 @@
             </objects>
             <point key="canvasLocation" x="2524" y="1322"/>
         </scene>
-        <!--Recents-->
-        <scene sceneID="dxj-Wd-lPM">
-            <objects>
-                <viewController id="Lh0-RO-7MC" customClass="MyDecksViewController" customModule="MyFlashCard" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LvT-gD-OUb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="for-av-xoa">
-                                <rect key="frame" x="167" y="87" width="41" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cards"/>
-                                <connections>
-                                    <action selector="button:" destination="Lh0-RO-7MC" eventType="touchUpInside" id="7yG-lJ-7ip"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i53-mi-1pZ">
-                                <rect key="frame" x="158" y="318" width="54" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Classes"/>
-                                <connections>
-                                    <action selector="classesBtn:" destination="Lh0-RO-7MC" eventType="touchUpInside" id="fSB-bj-JMO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6T-DV-qf4">
-                                <rect key="frame" x="166" y="516" width="43" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Decks"/>
-                                <connections>
-                                    <action selector="deckBtn:" destination="Lh0-RO-7MC" eventType="touchUpInside" id="0WQ-od-QH3"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="3Ao-Et-8on"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Recents" id="1Ub-bO-RRs"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="PMb-qY-BYL" kind="show" identifier="showSavedCardsSeg" id="snh-1R-Ytl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pFe-UM-Cgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1580" y="-970"/>
-        </scene>
-        <!--Practice View Controller-->
-        <scene sceneID="MVD-Ig-xLV">
-            <objects>
-                <viewController id="PMb-qY-BYL" customClass="PracticeViewController" customModule="MyFlashCard" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0Zp-S1-tiF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Wd4-uw-2Yd"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vmQ-z5-Njp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-700" y="-970"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bdM-nY-gbr">
             <objects>
@@ -399,9 +338,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Lh0-RO-7MC" kind="relationship" relationship="viewControllers" id="HPG-rq-8tl"/>
-                        <segue destination="cGa-rh-lax" kind="relationship" relationship="viewControllers" id="zmu-zc-imP"/>
                         <segue destination="uE8-ct-STp" kind="relationship" relationship="viewControllers" id="ZKz-hn-Zpd"/>
+                        <segue destination="cGa-rh-lax" kind="relationship" relationship="viewControllers" id="zmu-zc-imP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZk-XM-oye" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -590,7 +528,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Study"/>
                                 <connections>
-                                    <action selector="studyEnterButton:" destination="5ov-eb-266" eventType="touchUpInside" id="b3l-Vf-9dg"/>
+                                    <action selector="studyButtonClicked:" destination="5ov-eb-266" eventType="touchUpInside" id="9K3-0x-heg"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMA-Yt-X10">
@@ -605,7 +543,6 @@
                         <viewLayoutGuide key="safeArea" id="mfY-Nv-7zw"/>
                     </view>
                     <connections>
-                        <outlet property="studyButton" destination="JBg-1r-lfY" id="p9U-Jv-gmQ"/>
                         <segue destination="Fhl-VE-CdS" kind="show" identifier="cardSummarySeg" id="c9O-is-4Yo"/>
                         <segue destination="QS5-kn-S2n" kind="show" identifier="studySeg" id="9fq-MB-Ugz"/>
                     </connections>
@@ -617,7 +554,7 @@
         <!--Study View Controller-->
         <scene sceneID="QFR-zx-G1E">
             <objects>
-                <viewController id="QS5-kn-S2n" customClass="StudyViewController" sceneMemberID="viewController">
+                <viewController id="QS5-kn-S2n" customClass="StudyViewController" customModule="MyFlashCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jzo-hs-vmG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -626,17 +563,59 @@
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Favorite" id="MaL-SO-gU6"/>
+                                    <barButtonItem title="Favorite" id="MaL-SO-gU6">
+                                        <connections>
+                                            <action selector="favBtnPushed:" destination="QS5-kn-S2n" id="k9Q-Z9-ijN"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K5Y-cp-6Y8">
+                                <rect key="frame" x="67" y="110" width="240" height="404"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ra2-XB-JRj" appends="YES" id="J3k-fT-Irm"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fT0-oM-Kbd">
+                                <rect key="frame" x="61" y="530" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="prevBtnPushed:" destination="QS5-kn-S2n" eventType="touchUpInside" id="dKI-aE-Y4h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5n-zU-DJf">
+                                <rect key="frame" x="268" y="530" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextBtnPushed:" destination="QS5-kn-S2n" eventType="touchUpInside" id="cQG-Tq-1C3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="crO-QO-Dw8"/>
                     </view>
+                    <connections>
+                        <outlet property="favoriteButton" destination="MaL-SO-gU6" id="nhb-Bn-z4v"/>
+                        <outlet property="nextBtn" destination="t5n-zU-DJf" id="OOG-hP-gYB"/>
+                        <outlet property="prevBtn" destination="fT0-oM-Kbd" id="Yhm-GE-eFO"/>
+                        <outlet property="textView" destination="K5Y-cp-6Y8" id="RYa-Pd-NaH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIp-Or-vvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ra2-XB-JRj">
+                    <connections>
+                        <action selector="textViewTapped:" destination="QS5-kn-S2n" id="em5-pr-0fe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1732" y="-251"/>
+            <point key="canvasLocation" x="1732" y="-251.42428785607197"/>
         </scene>
     </scenes>
     <resources>

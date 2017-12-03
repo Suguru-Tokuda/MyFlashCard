@@ -22,26 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         cardStore = CardStore()
         deckStore = DeckStore()
         schoolClassStore = SchoolClassStore()
-        
-        schoolClassStore.fetchAllClassesOrderByClassnum { (schoolClassesResult) in
-            switch schoolClassesResult {
-            case let .success(schoolClasses):
-                self.schoolClassesToDownload = schoolClasses
-                print("Successfully found \(schoolClasses.count) classes (to download)")
-            case let .failure(error):
-                print("Error fetching classes: \(error)")
-            }
-        }
-        
-        schoolClassStore.fetchAllExistingClasses { (schoolClassesResult) in
-            switch schoolClassesResult {
-            case let .success(schoolClasses):
-                self.exisistingSchoolClasses = schoolClasses
-                print("Successfully found \(schoolClasses.count) classes (to study)")
-            case let .failure(error):
-                print("Error fetching classes: \(error)")
-            }
-        }
         return true
     }
 

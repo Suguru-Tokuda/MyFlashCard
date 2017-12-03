@@ -12,10 +12,14 @@ class ClassSelectTableViewController: UITableViewController {
     
     var schoolClasses : [SchoolClass]!
     var deckStore : DeckStore!
+    var schoolClassStore: SchoolClassStore!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        schoolClassStore = appDelegate.schoolClassStore
+        schoolClasses = schoolClassStore.fetchAllExistingClassesAsynchronously()
+        appDelegate.exisistingSchoolClasses = schoolClasses
     }
 
     override func didReceiveMemoryWarning() {
