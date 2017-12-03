@@ -164,6 +164,52 @@ public class DeckStore {
         }
     }
     
+    func fetchExistingDecksForClassid(completion: @escaping (DecksResult) -> Void, classid: String) {
+        let viewContext = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Deck> = Deck.fetchRequest()
+        let predicate = NSPredicate(format: "classid == %@", classid)
+        fetchRequest.predicate = predicate
+        
+        viewContext.perform {
+            do {
+                let allClasses = try viewContext.fetch(fetchRequest)
+                completion(.success(allClasses))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    //MAKR: - Delete methods
+    func deleteUnnecessaryDecks(decks: [Deck], targetid: String) {
+        let viewContext = self.persistentContainer.viewContext
+        for deck in decks {
+            if (deck.id != targetid) {
+                viewContext.delete(deck)
+            }
+        }
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func deleteAllTheDecks() {
+        let viewContext = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Deck> = Deck.fetchRequest()
+        
+        do {
+            let decks = try viewContext.fetch(fetchRequest) as [Deck]
+            for deck in decks {
+                viewContext.delete(deck)
+            }
+            try viewContext.save()
+        } catch let error as NSError {
+            print("Error in fetch : \(error)")
+        }
+    }
+    
     
     
 }

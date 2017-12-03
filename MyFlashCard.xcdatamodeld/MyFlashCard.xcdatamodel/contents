@@ -10,19 +10,21 @@
         <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="cards" inverseEntity="Deck" syncable="YES"/>
     </entity>
     <entity name="Deck" representedClassName="Deck" syncable="YES">
+        <attribute name="classid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="deckName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cards" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="deck" inverseEntity="Card" syncable="YES"/>
+        <relationship name="schoolClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolClass" inverseName="decks" inverseEntity="SchoolClass" syncable="YES"/>
     </entity>
     <entity name="SchoolClass" representedClassName="SchoolClass" syncable="YES">
-        <attribute name="classid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="classNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="decks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="schoolClass" inverseEntity="Deck" syncable="YES"/>
     </entity>
     <elements>
         <element name="Card" positionX="-54" positionY="-9" width="128" height="150"/>
-        <element name="Deck" positionX="-36" positionY="54" width="128" height="105"/>
-        <element name="SchoolClass" positionX="-45" positionY="63" width="128" height="90"/>
+        <element name="Deck" positionX="-36" positionY="54" width="128" height="120"/>
+        <element name="SchoolClass" positionX="-45" positionY="63" width="128" height="105"/>
     </elements>
 </model>

@@ -25,7 +25,7 @@ class DecksInfoDownloadViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        decks = appDelegate.decks
+        decks = appDelegate.decksToDownload
         return decks.count;
     }
     
@@ -38,6 +38,7 @@ class DecksInfoDownloadViewController: UITableViewController {
         let deck = self.decks[indexPath.row]
         let deckid = deck.id!
         self.deckName = deck.deckName
+        self.appDelegate.targetDeckid = deckid
         
         cardStore.fetchCardsForDeckID(deckid: deckid) { (cardsResult) in
             switch cardsResult {
@@ -54,7 +55,7 @@ class DecksInfoDownloadViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create an instance of UITableViewCell, with default appearance
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
-        decks = appDelegate.decks
+        decks = appDelegate.decksToDownload
 
         // Set the text on the cell with the description of the item
         // that is at the nth index of items, where n = row this cell

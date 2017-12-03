@@ -9,10 +9,11 @@ class ClassInfoDownloadViewController: UITableViewController {
     var cards: [Card]!
     var schoolClasses: [SchoolClass]!
     var backButtonTitle : String!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.cardStore = appDelegate.cardStore
         self.schoolClassStore = appDelegate.schoolClassStore
         
@@ -25,34 +26,33 @@ class ClassInfoDownloadViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        schoolClasses = appDelegate.schoolClasses
+        schoolClasses = appDelegate.schoolClassesToDownload
         return schoolClasses.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create an instance of UITableViewCell, with default appearance
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "classDownloadCell")
         
         // Set the text on the cell with the description of the item
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableview
         let schoolClass = schoolClasses[indexPath.row]
-        cell.textLabel?.text = schoolClass.classNum
-        cell.detailTextLabel?.text = schoolClass.name
-        return cell
+        cell?.textLabel?.text = "\(schoolClass.classNum!) \(schoolClass.name!)"
+        return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.deckStore = appDelegate.deckStore
-        let classnumber = self.schoolClasses[indexPath.row].classNum
+        let schoolClass = self.schoolClasses[indexPath.row]
+        let classnumber = schoolClass.classNum
+        self.appDelegate.targetClassid = schoolClass.id
         
         deckStore.fetchDeckForClassnumber(completion: { (dekcsResult) in
             switch dekcsResult {
             case let .success(decks):
                 // assign a response decks to a global variable in appDelegate
-                appDelegate.decks = decks
+                self.appDelegate.decksToDownload = decks
                 print("Successfully found \(decks.count) decks")
                 self.performSegue(withIdentifier: "fromClassToDeck", sender: self)
             case let . failure(error):

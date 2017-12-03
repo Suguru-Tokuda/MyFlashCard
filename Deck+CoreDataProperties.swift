@@ -2,7 +2,7 @@
 //  Deck+CoreDataProperties.swift
 //  MyFlashCard
 //
-//  Created by Suguru on 11/25/17.
+//  Created by Suguru on 12/2/17.
 //  Copyright © 2017 Suguru. All rights reserved.
 //
 //
@@ -19,7 +19,10 @@ extension Deck {
 
     @NSManaged public var deckName: String?
     @NSManaged public var id: String?
-    @NSManaged public var userid: String?
+    @NSManaged public var classid: String?
     @NSManaged public var cards: Card?
+    @NSManaged public var schoolClass: SchoolClass?
+    
+
 
 }

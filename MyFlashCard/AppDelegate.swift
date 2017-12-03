@@ -8,25 +8,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var cardStore: CardStore!
     var deckStore: DeckStore!
     var schoolClassStore: SchoolClassStore!
-    var schoolClasses: [SchoolClass]!
-    var decks: [Deck]!
+    var schoolClassesToDownload: [SchoolClass]!
+    var exisistingSchoolClasses: [SchoolClass]!
+    var studyDecks: [Deck]!
+    var decksToDownload: [Deck]!
     var cards: [Card]!
-    var index: Int?
+    var cardsToStudy: [Card]!
+    var targetDeckid: String!
+    var targetClassid: String!
+    var studyCard: Card!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         cardStore = CardStore()
         deckStore = DeckStore()
         schoolClassStore = SchoolClassStore()
+        
         schoolClassStore.fetchAllClassesOrderByClassnum { (schoolClassesResult) in
             switch schoolClassesResult {
             case let .success(schoolClasses):
-                self.schoolClasses = schoolClasses
-                print("Successfully found \(schoolClasses.count) classes.")
+                self.schoolClassesToDownload = schoolClasses
+                print("Successfully found \(schoolClasses.count) classes (to download)")
             case let .failure(error):
                 print("Error fetching classes: \(error)")
             }
         }
-        index = 0
+        
+        schoolClassStore.fetchAllExistingClasses { (schoolClassesResult) in
+            switch schoolClassesResult {
+            case let .success(schoolClasses):
+                self.exisistingSchoolClasses = schoolClasses
+                print("Successfully found \(schoolClasses.count) classes (to study)")
+            case let .failure(error):
+                print("Error fetching classes: \(error)")
+            }
+        }
         return true
     }
 

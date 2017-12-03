@@ -17,8 +17,9 @@ extension SchoolClass {
         return NSFetchRequest<SchoolClass>(entityName: "SchoolClass")
     }
 
+    @NSManaged public var id: String?
     @NSManaged public var classNum: String?
-    @NSManaged public var classid: String?
     @NSManaged public var name: String?
+    @NSManaged public var decks: Deck?
 
 }

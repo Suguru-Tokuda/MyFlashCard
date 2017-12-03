@@ -61,7 +61,7 @@ struct MyFlashCardAPI {
             return .failure(error)
         }
     }
-    
+        
     static func classes(fromJSON data: Data, into context: NSManagedObjectContext) -> SchoolClassesResult {
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
@@ -142,7 +142,6 @@ struct MyFlashCardAPI {
         }
         
         
-        //        let card = Card(question: question, answer: answer, cardID: String(id), deckID: String(deckid), priority: priority, marked: false)
         return card
     }
     
@@ -150,12 +149,12 @@ struct MyFlashCardAPI {
         guard
             let classname = json["classname"] as? String,
             let classnumber = json["classnumber"] as? String,
-            let classid = json["id"] as? Int else {
+            let id = json["id"] as? Int else {
                 return nil
         }
         
         let fetcRequest: NSFetchRequest<SchoolClass> = SchoolClass.fetchRequest()
-        let predicate = NSPredicate(format: "\(#keyPath(SchoolClass.classid)) == \(classid)")
+        let predicate = NSPredicate(format: "\(#keyPath(SchoolClass.id)) == \(id)")
         fetcRequest.predicate = predicate
         
         var fetchedClasses: [SchoolClass]?
@@ -170,7 +169,7 @@ struct MyFlashCardAPI {
         context.performAndWait {
             schoolClass = SchoolClass(context: context)
             schoolClass.name = classname
-            schoolClass.classid = String(classid)
+            schoolClass.id = String(id)
             schoolClass.classNum = classnumber
         }
         
@@ -181,7 +180,7 @@ struct MyFlashCardAPI {
         guard
             let deckname = json["deckname"] as? String,
             let id = json["id"] as? Int,
-            let userid = json["userid"] as? Int else {
+            let classid = json["classid"] as? Int else {
                 return nil
             }
         
@@ -202,7 +201,7 @@ struct MyFlashCardAPI {
             deck = Deck(context: context)
             deck.id = String(id)
             deck.deckName = deckname
-            deck.userid = String(userid)
+            deck.classid = String(classid)
         }
         return deck
     }

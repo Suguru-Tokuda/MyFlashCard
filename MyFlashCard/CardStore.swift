@@ -18,16 +18,17 @@ public class CardStore {
         return container
     }()
     
-    // MARK: - Core Data Saving support
+    public func resetContainer() {
+        
+    }
     
+    // MARK: - Core Data Saving support
     public func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
@@ -46,6 +47,13 @@ public class CardStore {
         return MyFlashCardAPI.cards(fromJSON: jsonData, into: persistentContainer.viewContext)
     }
     
+    private func processCardRequestWithoutContext(data: Data?, error: Error?) -> CardsResult {
+        guard let jsonData = data else {
+            return .failure(error!)
+        }
+        return MyFlashCardAPI.cards(fromJSON: jsonData, into: persistentContainer.viewContext)
+    }
+    
     // MARK: - REST calls
     // MARK: - Practice get all cards
     func fetchAllCards(completion: @escaping (CardsResult) -> Void) {
@@ -54,20 +62,14 @@ public class CardStore {
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
-            var result = self.processCardRequest(data: data, error: error)
-            if case .success = result {
-                do {
-                    try self.persistentContainer.viewContext.save()
-                } catch let error {
-                    result = .failure(error)
-                }
-            }
+            let result = self.processCardRequest(data: data, error: error)
             OperationQueue.main.addOperation {
                 completion(result)
             }
         }
         task.resume()
     }
+
     // MARK: - Cards
     func fetchCardsForDeckID(deckid: String, completion: @escaping (CardsResult) -> Void) {
         let url = MyFlashCardAPI.myFlashCardURL(method: .cardsForDeckid, parameter: deckid)
@@ -110,7 +112,7 @@ public class CardStore {
         }
     }
     
-    func fetchCardsForDeckID(completion: @escaping (CardsResult) -> Void, deckid: String) {
+    func fetchExistingCardsForDeckID(completion: @escaping (CardsResult) -> Void, deckid: String) {
         let viewContext = self.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Card> = Card.fetchRequest()
         let predicate = NSPredicate(format: "deckid == %@", deckid)
@@ -126,6 +128,34 @@ public class CardStore {
         }
     }
     
-
+    //MAKR: - Delete methods
+    func deleteUnnecessaryCards(cards: [Card], targetid: String) {
+        let viewContext = self.persistentContainer.viewContext
+        for card in cards {
+            if (card.deckid != targetid) {
+                viewContext.delete(card)
+            }
+        }
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func deleteAllTheCards() {
+        let viewContext = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Card> = Card.fetchRequest()
+        
+        do {
+            let cards = try viewContext.fetch(fetchRequest) as [Card]
+            for card in cards {
+                viewContext.delete(card)
+            }
+            try viewContext.save()
+        } catch let error as NSError {
+            print("Error in fetch : \(error)")
+        }
+    }
     
 }

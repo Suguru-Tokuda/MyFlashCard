@@ -73,6 +73,37 @@ public class SchoolClassStore {
         }
     }
     
+    //MAKR: - Delete methods
+    func deleteUnnecessarySchoolClasses(scoolClasses: [SchoolClass], targetid: String) {
+        let viewContext = self.persistentContainer.viewContext
+        for scoolClass in scoolClasses {
+            if (scoolClass.id != targetid) {
+                viewContext.delete(scoolClass)
+            }
+        }
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func deleteAllTheClasses() {
+        let viewContext = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<SchoolClass> = SchoolClass.fetchRequest()
+        
+        do {
+            let schoolClasses = try viewContext.fetch(fetchRequest) as [SchoolClass]
+            for schoolClass in schoolClasses {
+                viewContext.delete(schoolClass)
+            }
+            try viewContext.save()
+        } catch let error as NSError {
+            print("Error in fetch : \(error)")
+        }
+        
+    }
+    
     
     
     

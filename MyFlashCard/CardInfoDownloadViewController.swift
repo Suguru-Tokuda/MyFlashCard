@@ -7,13 +7,17 @@ class CardInfoDownloadViewController: UIViewController, UITableViewDataSource, U
 
     @IBOutlet weak var cardTableView: UITableView!
     @IBOutlet weak var titleText: UINavigationItem!
-    var cards : [Card]!
+    var cards: [Card]!
+    var decks: [Deck]!
+    var schoolClasses: [SchoolClass]!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var deckName : String!
-    var questionString : String!
-    var answerString : String!
-    var cardStore : CardStore!
-    var persistentContainer : NSPersistentContainer!
+    var deckName: String!
+    var questionString: String!
+    var answerString: String!
+    var cardStore: CardStore!
+    var deckStore: DeckStore!
+    var schoolClassStore: SchoolClassStore!
+    var persistentContainer: NSPersistentContainer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +65,20 @@ class CardInfoDownloadViewController: UIViewController, UITableViewDataSource, U
 
     //MARK: - Button
     @IBAction func downloadButton(_ sender: Any) {
+        let targetDeckid = self.appDelegate.targetDeckid
+        let targetClassid = self.appDelegate.targetClassid
         cardStore = self.appDelegate.cardStore
+        deckStore = self.appDelegate.deckStore
+
+        schoolClassStore = self.appDelegate.schoolClassStore
+        decks = self.appDelegate.decksToDownload
+        schoolClasses = self.appDelegate.schoolClassesToDownload
+        
+        // delete objects which don't have the target id
+        cardStore.deleteUnnecessaryCards(cards: cards, targetid: targetDeckid!)
+        deckStore.deleteUnnecessaryDecks(decks: decks, targetid: targetDeckid!)
+        schoolClassStore.deleteUnnecessarySchoolClasses(scoolClasses: schoolClasses, targetid: targetClassid!)
+        
         cardStore.saveContext()
         performSegue(withIdentifier: "downloadSegue", sender: self)
     }
