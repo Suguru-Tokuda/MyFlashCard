@@ -84,7 +84,9 @@ public class DeckStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             let result = self.processDeckRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }
@@ -96,7 +98,9 @@ public class DeckStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             let result = self.processDeckRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }
@@ -108,7 +112,9 @@ public class DeckStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             let result = self.processDeckRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }
@@ -120,7 +126,9 @@ public class DeckStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             let result = self.processDeckRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }
@@ -132,7 +140,9 @@ public class DeckStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             let result = self.processDeckRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }
@@ -144,7 +154,9 @@ public class DeckStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             let result = self.processDeckRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }

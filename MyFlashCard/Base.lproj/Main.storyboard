@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="JYF-nk-oOk" kind="relationship" relationship="rootViewController" id="dOa-yN-10T"/>
+                        <segue destination="L4N-wD-vPC" kind="relationship" relationship="rootViewController" id="zmo-1j-WRu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qd9-VQ-7GX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -76,7 +76,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaC-TC-Bsb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-700" y="466"/>
+            <point key="canvasLocation" x="132" y="1057"/>
         </scene>
         <!--Download-->
         <scene sceneID="n3a-CW-6Pp">
@@ -116,7 +116,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yd-gd-Ssc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="466"/>
+            <point key="canvasLocation" x="969" y="466"/>
         </scene>
         <!--Download-->
         <scene sceneID="Kmr-nV-eV2">
@@ -184,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhS-Ns-ICx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="466"/>
+            <point key="canvasLocation" x="1732" y="466"/>
         </scene>
         <!--Card Summary View Controller-->
         <scene sceneID="cXx-KL-FYL">
@@ -247,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvH-4c-gkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895" y="-925"/>
+            <point key="canvasLocation" x="1732" y="-959"/>
         </scene>
         <!--Card Details View Controller-->
         <scene sceneID="tZy-Xm-ZSd">
@@ -296,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ykp-eg-wwi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1950" y="466"/>
+            <point key="canvasLocation" x="2524" y="466"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="iiV-LK-Vvp">
@@ -325,7 +325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2eq-S5-S1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="1315"/>
+            <point key="canvasLocation" x="2524" y="1322"/>
         </scene>
         <!--Recents-->
         <scene sceneID="dxj-Wd-lPM">
@@ -408,6 +408,61 @@
             </objects>
             <point key="canvasLocation" x="-2510" y="114"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="RUX-Sd-eiq">
+            <objects>
+                <viewController id="L4N-wD-vPC" customClass="SearchViewController" customModule="MyFlashCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DDe-Xp-8LK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ez-gZ-dUR">
+                                <rect key="frame" x="164" y="350" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="By List"/>
+                                <connections>
+                                    <action selector="searchByListBtn:" destination="L4N-wD-vPC" eventType="touchUpInside" id="0wo-Hy-i55"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aky-ri-Rra">
+                                <rect key="frame" x="65" y="167" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" hint="Keyword"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMs-Sm-olN">
+                                <rect key="frame" x="65" y="205" width="244" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gpt-WH-GL0">
+                                <rect key="frame" x="147" y="261" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="By Keyword"/>
+                                <connections>
+                                    <action selector="searchByKeywordBtn:" destination="L4N-wD-vPC" eventType="touchUpInside" id="y2a-lM-FPi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5kC-Sp-QiP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2by-Fi-b9g"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="fMs-Sm-olN" id="Af0-qN-Uim"/>
+                        <outlet property="keywordTextField" destination="Aky-ri-Rra" id="oPv-mx-acr"/>
+                        <segue destination="JYF-nk-oOk" kind="show" identifier="searchByListSeg" id="QrA-zt-XIe"/>
+                        <segue destination="QYw-DP-gMI" kind="show" identifier="searchByKeywordSeg" id="aWF-3J-Tjt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gwv-fF-hHP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-831" y="466"/>
+        </scene>
         <!--My Decks-->
         <scene sceneID="iND-wj-5a7">
             <objects>
@@ -419,7 +474,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="OTO-MG-9B1" kind="relationship" relationship="rootViewController" id="6ht-3N-tTn"/>
+                        <segue destination="OTO-MG-9B1" kind="relationship" relationship="rootViewController" id="wIL-1j-Ex0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lE7-Ch-HA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -501,7 +556,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YN-PJ-o4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="-251"/>
+            <point key="canvasLocation" x="132" y="-251"/>
         </scene>
         <!--Study Cards Detail View Controller-->
         <scene sceneID="sAn-Uk-p8d">
@@ -557,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v4L-3m-q5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="-251.42428785607197"/>
+            <point key="canvasLocation" x="969" y="-251"/>
         </scene>
         <!--Study View Controller-->
         <scene sceneID="QFR-zx-G1E">
@@ -581,11 +636,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIp-Or-vvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1894" y="-198"/>
+            <point key="canvasLocation" x="1732" y="-251"/>
         </scene>
     </scenes>
     <resources>
         <image name="bank_cards" width="30" height="30"/>
         <image name="download" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="aWF-3J-Tjt"/>
+    </inferredMetricsTieBreakers>
 </document>
