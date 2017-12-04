@@ -6,15 +6,15 @@ enum Method: String {
     case cardsForDeckid = ".cards/findByDeckid/"
     case cardsForDeckname = ".cards/findByDeckname/"
     case classes = ".classes"
-    case classesOrderByClassnum = ".classes/allClassesOrderByClassnum"
+    case classesOrderByClassnum = ".classes/allClassesOrderByClassnum/"
     case deckForID = ".decks/"
-    case decksForDeckname = ".decks/findByDeckname"
+    case decksForDeckname = ".decks/findByDeckname/"
     case dekcsForClassid = ".decks/findByClassid/"
     case decksForClassnumber = ".decks/findByClassnumber/"
     case decksForClassname = ".decks/findbyClassname/"
     case decksForUsername = ".decks/findByUsername/"
     case decksForKeyword = ".decks/findByKeyword/"
-    case allDecksOrderByDeckname = ".deck/allDecksOrderByDeckname"
+    case allDecksOrderByDeckname = ".deck/allDecksOrderByDeckname/"
     case users = ".users"
 }
 
