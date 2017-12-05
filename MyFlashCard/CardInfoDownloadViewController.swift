@@ -7,9 +7,9 @@ class CardInfoDownloadViewController: UIViewController, UITableViewDataSource, U
 
     @IBOutlet weak var cardTableView: UITableView!
     @IBOutlet weak var titleText: UINavigationItem!
-    var cards: [Card]!
-    var decks: [Deck]!
-    var schoolClasses: [SchoolClass]!
+    var cardsToDownload: [Card]!
+    var decksToDownload: [Deck]!
+    var schoolClassesToDownload: [SchoolClass]!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var deckName: String!
     var questionString: String!
@@ -18,6 +18,7 @@ class CardInfoDownloadViewController: UIViewController, UITableViewDataSource, U
     var deckStore: DeckStore!
     var schoolClassStore: SchoolClassStore!
     var persistentContainer: NSPersistentContainer!
+    var downloadMessage: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +37,14 @@ class CardInfoDownloadViewController: UIViewController, UITableViewDataSource, U
             vc.answerString = self.answerString
         }
         if segue.identifier == "downloadSegue" {
-//            let vc = segue.destination as! CardsDownloadCompleteViewController
+            let vc = segue.destination as! CardsDownloadCompleteViewController
+            vc.downloadMessage = self.downloadMessage
         }
     }
     
     //MARK: - TableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let card = cards[indexPath.row]
+        let card = cardsToDownload[indexPath.row]
         questionString = card.question
         answerString = card.answer
         self.performSegue(withIdentifier: "cardDetailsSeg", sender: self)
@@ -50,14 +52,14 @@ class CardInfoDownloadViewController: UIViewController, UITableViewDataSource, U
     
     //MARK: - TableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cards = appDelegate.cards
-        return cards.count
+        cardsToDownload = appDelegate.cardsToDownload
+        return cardsToDownload.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cardCell", for: indexPath)
-        cards = appDelegate.cards
-        let card = cards[indexPath.row]
+        cardsToDownload = appDelegate.cardsToDownload
+        let card = cardsToDownload[indexPath.row]
         cell.textLabel?.text = card.question
         return cell
     }
@@ -71,15 +73,25 @@ class CardInfoDownloadViewController: UIViewController, UITableViewDataSource, U
         deckStore = self.appDelegate.deckStore
 
         schoolClassStore = self.appDelegate.schoolClassStore
-        decks = self.appDelegate.decksToDownload
-        schoolClasses = self.appDelegate.schoolClassesToDownload
+        decksToDownload = self.appDelegate.decksToDownload
+        schoolClassesToDownload = self.appDelegate.schoolClassesToDownload
         
-        // delete objects which don't have the target id
-        cardStore.deleteUnnecessaryCards(cards: cards, targetid: targetDeckid!)
-        deckStore.deleteUnnecessaryDecks(decks: decks, targetid: targetDeckid!)
-        schoolClassStore.deleteUnnecessarySchoolClasses(scoolClasses: schoolClasses, targetid: targetClassid!)
+//        if (deckStore.fetchExistingDeckForId(deckid: targetDeckid!).count > 0) {
+//            cardStore.deleteCardsFromArray(cards: cardsToDownload)
+//            deckStore.deleteDecksFromArray(decks: decksToDownload)
+//            schoolClassStore.deleteSchoolClassesFromArray(schoolClasses: schoolClassesToDownload)
+//            self.downloadMessage = "This deck is already in the device"
+//        } else {
+            // delete objects which don't have the target id
+            cardStore.deleteUnnecessaryCards(cards: cardsToDownload, targetid: targetDeckid!)
+            deckStore.deleteUnnecessaryDecks(decks: decksToDownload, targetid: targetDeckid!)
+            schoolClassStore.deleteUnnecessarySchoolClasses(scoolClasses: schoolClassesToDownload, targetid: targetClassid!)
+            self.downloadMessage = "Downloaded \(deckName!)"
+//        }
         
         cardStore.saveContext()
+        self.appDelegate.existingSchoolClasses = schoolClassStore.fetchAllExistingClassesAsynchronously()
+        
         performSegue(withIdentifier: "downloadSegue", sender: self)
     }
 }

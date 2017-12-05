@@ -298,10 +298,10 @@
             </objects>
             <point key="canvasLocation" x="2524" y="466"/>
         </scene>
-        <!--View Controller-->
+        <!--Cards Download Complete View Controller-->
         <scene sceneID="iiV-LK-Vvp">
             <objects>
-                <viewController id="2UJ-OG-ckW" sceneMemberID="viewController">
+                <viewController id="2UJ-OG-ckW" customClass="CardsDownloadCompleteViewController" customModule="MyFlashCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3A6-KM-fm0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,6 +322,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R2i-hI-Qjg"/>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="KQk-TM-GkU" id="vbl-CF-0Ak"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2eq-S5-S1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -623,6 +626,6 @@
         <image name="download" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aWF-3J-Tjt"/>
+        <segue reference="wdQ-v8-sDh"/>
     </inferredMetricsTieBreakers>
 </document>

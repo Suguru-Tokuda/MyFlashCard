@@ -15,10 +15,8 @@
 		BB3F68481FC61AE50074E27F /* MyFlashCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68471FC61AE50074E27F /* MyFlashCardTests.swift */; };
 		BB3F68531FC61AE50074E27F /* MyFlashCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68521FC61AE50074E27F /* MyFlashCardUITests.swift */; };
 		BB3F68651FC61BC40074E27F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68641FC61BC40074E27F /* User.swift */; };
-		BB3F68691FC61F7A0074E27F /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F68681FC61F7A0074E27F /* Assignment.swift */; };
 		BB4546D71FC8B9DD00F8F568 /* MyFlashCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4546D61FC8B9DD00F8F568 /* MyFlashCardAPI.swift */; };
 		BB4546D91FC8C95B00F8F568 /* CardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4546D81FC8C95B00F8F568 /* CardStore.swift */; };
-		BB46C2511FC635ED006E2481 /* RecentlyStudiedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2501FC635ED006E2481 /* RecentlyStudiedViewController.swift */; };
 		BB46C2531FC6367A006E2481 /* MyDecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */; };
 		BB46C2551FC63D64006E2481 /* ClassInfoDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB46C2541FC63D64006E2481 /* ClassInfoDownloadViewController.swift */; };
 		BB530F5E1FCA72DA00CBA242 /* CardInfoDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB530F5D1FCA72D900CBA242 /* CardInfoDownloadViewController.swift */; };
@@ -75,10 +73,8 @@
 		BB3F68521FC61AE50074E27F /* MyFlashCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFlashCardUITests.swift; sourceTree = "<group>"; };
 		BB3F68541FC61AE50074E27F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB3F68641FC61BC40074E27F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		BB3F68681FC61F7A0074E27F /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		BB4546D61FC8B9DD00F8F568 /* MyFlashCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFlashCardAPI.swift; sourceTree = "<group>"; };
 		BB4546D81FC8C95B00F8F568 /* CardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStore.swift; sourceTree = "<group>"; };
-		BB46C2501FC635ED006E2481 /* RecentlyStudiedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyStudiedViewController.swift; sourceTree = "<group>"; };
 		BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDecksViewController.swift; sourceTree = "<group>"; };
 		BB46C2541FC63D64006E2481 /* ClassInfoDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassInfoDownloadViewController.swift; sourceTree = "<group>"; };
 		BB530F5D1FCA72D900CBA242 /* CardInfoDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoDownloadViewController.swift; sourceTree = "<group>"; };
@@ -165,19 +161,17 @@
 				BB3F683B1FC61AE50074E27F /* LaunchScreen.storyboard */,
 				BB3F683E1FC61AE50074E27F /* Info.plist */,
 				BB3F68641FC61BC40074E27F /* User.swift */,
-				BB3F68681FC61F7A0074E27F /* Assignment.swift */,
-				BB46C2501FC635ED006E2481 /* RecentlyStudiedViewController.swift */,
 				BBCCA42C1FD45B7B000D76D2 /* SearchViewController.swift */,
 				BB46C2521FC6367A006E2481 /* MyDecksViewController.swift */,
 				BB46C2541FC63D64006E2481 /* ClassInfoDownloadViewController.swift */,
 				BBB1F10F1FCA6AEA00B40731 /* DecksInfoDownloadViewController.swift */,
 				BB530F5D1FCA72D900CBA242 /* CardInfoDownloadViewController.swift */,
+				BBE1AFBB1FD32A49000ED8A2 /* CardsDownloadCompleteViewController.swift */,
 				BBE1AF7C1FD30369000ED8A2 /* CardDetailsViewController.swift */,
 				BB4546D61FC8B9DD00F8F568 /* MyFlashCardAPI.swift */,
 				BB4546D81FC8C95B00F8F568 /* CardStore.swift */,
 				BB530F5F1FCA731700CBA242 /* DeckStore.swift */,
 				BBB1F10D1FCA61AB00B40731 /* SchoolClassStore.swift */,
-				BBE1AFBB1FD32A49000ED8A2 /* CardsDownloadCompleteViewController.swift */,
 				BB7F30921FD34E190079174C /* ClassSelectTableViewController.swift */,
 				BB7F30941FD34E2D0079174C /* DeckSelectTableViewController.swift */,
 				BB7F30AC1FD3B0B90079174C /* StudyCardsDetailViewController.swift */,
@@ -341,8 +335,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBE1AF7D1FD30369000ED8A2 /* CardDetailsViewController.swift in Sources */,
-				BB3F68691FC61F7A0074E27F /* Assignment.swift in Sources */,
-				BB46C2511FC635ED006E2481 /* RecentlyStudiedViewController.swift in Sources */,
 				BBE1AFBC1FD32A49000ED8A2 /* CardsDownloadCompleteViewController.swift in Sources */,
 				BB4546D71FC8B9DD00F8F568 /* MyFlashCardAPI.swift in Sources */,
 				BB3F68351FC61AE50074E27F /* ViewController.swift in Sources */,

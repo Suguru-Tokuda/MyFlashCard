@@ -192,6 +192,20 @@ public class DeckStore {
         }
     }
     
+    func fetchExistingDeckForId(deckid: String) -> [Deck] {
+        let viewContext = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Deck> = Deck.fetchRequest()
+        let predicate = NSPredicate(format: "id == %@", deckid)
+        fetchRequest.predicate = predicate
+        var tempArray: [Deck]!
+        do {
+            tempArray = try viewContext.fetch(fetchRequest) as [Deck]
+        } catch let error as NSError {
+            print(error)
+        }
+        return tempArray
+    }
+    
     //MAKR: - Delete methods
     func deleteUnnecessaryDecks(decks: [Deck], targetid: String) {
         let viewContext = self.persistentContainer.viewContext
@@ -199,6 +213,18 @@ public class DeckStore {
             if (deck.id != targetid) {
                 viewContext.delete(deck)
             }
+        }
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func deleteDecksFromArray(decks: [Deck]) {
+        let viewContext = self.persistentContainer.viewContext
+        for deck in decks {
+            viewContext.delete(deck)
         }
         do {
             try viewContext.save()

@@ -32,7 +32,7 @@ class MyDecksViewController: UIViewController {
             switch cardsResult {
                 case let .success(cards):
                     print("Num of cards \(cards.count)")
-                    self.appDelegate.cards = cards
+                    self.appDelegate.cardsToDownload = cards
                     self.performSegue(withIdentifier: "showSavedCardsSeg", sender: self)
             case let .failure(error):
                 print("Error fetching cards: \(error)")
@@ -50,10 +50,7 @@ class MyDecksViewController: UIViewController {
                 print("Error fetching cards: \(error)")
             }
         }
-        
     }
-    
-    
     
     @IBAction func deckBtn(_ sender: Any) {
     }

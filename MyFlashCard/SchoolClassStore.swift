@@ -100,6 +100,18 @@ public class SchoolClassStore {
         }
     }
     
+    func deleteSchoolClassesFromArray(schoolClasses: [SchoolClass]) {
+        let viewContext = self.persistentContainer.viewContext
+        for schoolClass in schoolClasses {
+            viewContext.delete(schoolClass)
+        }
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
     func deleteAllTheClasses() {
         let viewContext = self.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<SchoolClass> = SchoolClass.fetchRequest()

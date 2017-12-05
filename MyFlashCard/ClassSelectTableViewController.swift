@@ -10,16 +10,21 @@ import UIKit
 
 class ClassSelectTableViewController: UITableViewController {
     
-    var schoolClasses : [SchoolClass]!
+    var existingSchoolClasses : [SchoolClass]!
     var deckStore : DeckStore!
     var schoolClassStore: SchoolClassStore!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         schoolClassStore = appDelegate.schoolClassStore
-        schoolClasses = schoolClassStore.fetchAllExistingClassesAsynchronously()
-        appDelegate.exisistingSchoolClasses = schoolClasses
+        existingSchoolClasses = schoolClassStore.fetchAllExistingClassesAsynchronously()
+        self.appDelegate.existingSchoolClasses = existingSchoolClasses
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        existingSchoolClasses = self.appDelegate.existingSchoolClasses
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,34 +32,32 @@ class ClassSelectTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedClassid = self.schoolClasses[indexPath.row].id
+        let selectedClassid = self.existingSchoolClasses[indexPath.row].id
         self.deckStore = self.appDelegate.deckStore
         deckStore.fetchExistingDecksForClassid(completion: { (decksResult) in
             switch decksResult {
             case let .success(decks):
-                print("Successfully found \(decks.count) classes.")
-                self.appDelegate.studyDecks = decks
+                print("Successfully found \(decks.count) decks.")
+                self.appDelegate.existingDecks = decks
                 self.performSegue(withIdentifier: "toExistingDecksSeg", sender: self)
             case let .failure(error):
                 print("Error fetching classes: \(error)")
             }
         }, classid: selectedClassid!)
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appDelegate.exisistingSchoolClasses.count
+        return appDelegate.existingSchoolClasses.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectClassCell", for: indexPath)
-        self.schoolClasses = self.appDelegate.exisistingSchoolClasses
-        let schoolClass = schoolClasses[indexPath.row]
+        self.existingSchoolClasses = self.appDelegate.existingSchoolClasses
+        let schoolClass = existingSchoolClasses[indexPath.row]
         cell.textLabel?.text = "\(schoolClass.classNum!) \(schoolClass.name!)"
         return cell
     }
     
-
     /*
     // MARK: - Navigation
 

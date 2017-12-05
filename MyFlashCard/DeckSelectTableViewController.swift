@@ -31,7 +31,7 @@ class DeckSelectTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        decks = appDelegate.studyDecks
+        decks = appDelegate.existingDecks
         return decks.count
     }
     

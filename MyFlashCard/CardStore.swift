@@ -145,6 +145,18 @@ public class CardStore {
         }
     }
     
+    func deleteCardsFromArray(cards: [Card]) {
+        let viewContext = self.persistentContainer.viewContext
+        for card in cards {
+            viewContext.delete(card)
+        }
+        do {
+            try viewContext.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
     func deleteAllTheCards() {
         let viewContext = self.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Card> = Card.fetchRequest()

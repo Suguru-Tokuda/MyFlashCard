@@ -9,10 +9,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var deckStore: DeckStore!
     var schoolClassStore: SchoolClassStore!
     var schoolClassesToDownload: [SchoolClass]!
-    var exisistingSchoolClasses: [SchoolClass]!
+    var existingSchoolClasses: [SchoolClass]!
+    var existingDecks: [Deck]!
     var studyDecks: [Deck]!
     var decksToDownload: [Deck]!
-    var cards: [Card]!
+    var cardsToDownload: [Card]!
     var cardsToStudy: [Card]!
     var targetDeckid: String!
     var targetClassid: String!
@@ -21,7 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         cardStore = CardStore()
         deckStore = DeckStore()
-        schoolClassStore = SchoolClassStore()
+        schoolClassStore = SchoolClassStore()        
+        deckStore.fetchAllExistingDecks { (decksResult) in
+            switch decksResult {
+            case let .success(decks):
+                self.existingDecks = decks
+                print("Successfully fetched \(decks.count) existig decks.")
+            case let .failure(error):
+                print("Error in fetching decks: \(error)")
+            }
+        }
         return true
     }
 

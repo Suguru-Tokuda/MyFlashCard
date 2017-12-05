@@ -2,10 +2,12 @@ import UIKit
 
 class CardsDownloadCompleteViewController: UIViewController {
 
-    var deckNameString: String!
+    var downloadMessage: String!
+    @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        label.text = downloadMessage
     }
 
     override func didReceiveMemoryWarning() {

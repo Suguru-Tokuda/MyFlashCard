@@ -11,15 +11,16 @@ import UIKit
 class SearchViewController: UIViewController {
     
     var deckStore: DeckStore!
+    var schoolClassSotre: SchoolClassStore!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var keywordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -43,9 +44,17 @@ class SearchViewController: UIViewController {
             errorLabel.text = "Fill the box to search"
         }
     }
-
-    @IBAction func searchByListBtn(_ sender: Any) {
-        self.performSegue(withIdentifier: "searchByListSeg", sender: self)
-    }
     
+    @IBAction func searchByListBtn(_ sender: Any) {
+        schoolClassSotre = appDelegate.schoolClassStore
+        schoolClassSotre.fetchAllClassesOrderByClassnum { (schoolClassesResult) in
+            switch schoolClassesResult {
+            case let .success(schoolClasses):
+                self.appDelegate.schoolClassesToDownload = schoolClasses
+                self.performSegue(withIdentifier: "searchByListSeg", sender: self)
+            case let .failure(error):
+                print("Erorr in fetching classes: \(error)")
+            }
+        }
+    }
 }
