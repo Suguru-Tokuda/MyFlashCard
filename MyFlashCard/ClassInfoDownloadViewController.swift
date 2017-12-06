@@ -10,6 +10,8 @@ class ClassInfoDownloadViewController: UITableViewController {
     var schoolClassesToDownload: [SchoolClass]!
     var backButtonTitle : String!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    var tempDeckArray: [Deck]!
 
     
     override func viewDidLoad() {
@@ -38,20 +40,29 @@ class ClassInfoDownloadViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.deckStore = appDelegate.deckStore
         let schoolClass = self.schoolClassesToDownload[indexPath.row]
-        let classnumber = schoolClass.classNum
         self.appDelegate.targetClassid = schoolClass.id
-        deckStore.fetchDeckForClassnumber(completion: { (dekcsResult) in
-            switch dekcsResult {
+        
+        tempDeckArray = self.appDelegate.decksToDownload
+        if tempDeckArray != nil {
+            deckStore.deleteDecksFromArray(decks: tempDeckArray)
+        }
+        
+        deckStore.fetchDecksForClassid(classid: schoolClass.id!) { (decksResult) in
+            switch decksResult {
             case let .success(decks):
-                // assign a response decks to a global variable in appDelegate
-                self.appDelegate.decksToDownload = decks
-                print("Successfully found \(decks.count) decks")
+                print("Successfully found \(decks.count) decks from schoolClassid \(schoolClass.id!)")
+                var tempDeckArray = self.appDelegate.decksToDownload
+                for deck in decks {
+                    if tempDeckArray?.contains(deck) == false {
+                        tempDeckArray?.append(deck)
+                    }
+                }
+                self.appDelegate.decksToDownload = tempDeckArray
                 self.performSegue(withIdentifier: "fromClassToDeck", sender: self)
             case let .failure(error):
                 print("Error fetching decks: \(error)")
-                
             }
-        }, classnumber: classnumber!)
+        }
     }
     
     override func didReceiveMemoryWarning() {

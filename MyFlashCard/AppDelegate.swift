@@ -22,7 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         cardStore = CardStore()
         deckStore = DeckStore()
-        schoolClassStore = SchoolClassStore()        
+        schoolClassStore = SchoolClassStore()
+        cardStore.deleteAllTheCards()
+        deckStore.deleteAllTheDecks()
+        schoolClassStore.deleteAllTheClasses()
+        
+        cardsToDownload = [Card]()
+        decksToDownload = [Deck]()
+        schoolClassesToDownload = [SchoolClass]()
+        
         deckStore.fetchAllExistingDecks { (decksResult) in
             switch decksResult {
             case let .success(decks):

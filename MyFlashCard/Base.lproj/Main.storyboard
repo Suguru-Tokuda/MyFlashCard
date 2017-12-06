@@ -310,6 +310,9 @@
                                 <rect key="frame" x="147" y="439" width="81" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back to Top"/>
+                                <connections>
+                                    <action selector="backBtnPushed:" destination="2UJ-OG-ckW" eventType="touchUpInside" id="xbC-LU-5rV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQk-TM-GkU">
                                 <rect key="frame" x="38" y="186" width="299" height="21"/>
@@ -324,6 +327,7 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="KQk-TM-GkU" id="vbl-CF-0Ak"/>
+                        <segue destination="L4N-wD-vPC" kind="show" identifier="backToTopSeg" id="s2M-CO-WLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2eq-S5-S1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -578,7 +582,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Ra2-XB-JRj" appends="YES" id="J3k-fT-Irm"/>
@@ -626,6 +630,7 @@
         <image name="download" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="s2M-CO-WLP"/>
         <segue reference="wdQ-v8-sDh"/>
     </inferredMetricsTieBreakers>
 </document>

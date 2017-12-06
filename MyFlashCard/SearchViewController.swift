@@ -33,7 +33,13 @@ class SearchViewController: UIViewController {
             deckStore.fetchDecksForKeyword(keyword: keyword!, completion: { (decksResult) in
                 switch decksResult {
                 case let .success(decks):
-                    self.appDelegate.decksToDownload = decks
+                    var tempDeckArray = self.appDelegate.decksToDownload
+                    for deck in decks {
+                        if tempDeckArray?.contains(deck) == false {
+                            tempDeckArray?.append(deck)
+                        }
+                    }
+                    self.appDelegate.decksToDownload = tempDeckArray
                     print("Successfully fetched \(decks.count) decks")
                     self.performSegue(withIdentifier: "searchByKeywordSeg", sender: self)
                 case let . failure(error):
@@ -50,7 +56,13 @@ class SearchViewController: UIViewController {
         schoolClassSotre.fetchAllClassesOrderByClassnum { (schoolClassesResult) in
             switch schoolClassesResult {
             case let .success(schoolClasses):
-                self.appDelegate.schoolClassesToDownload = schoolClasses
+                var tempSchoolClassArray = self.appDelegate.schoolClassesToDownload
+                for schoolClass in schoolClasses {
+                    if tempSchoolClassArray?.contains(schoolClass) == false {
+                        tempSchoolClassArray?.append(schoolClass)
+                    }
+                }
+                self.appDelegate.schoolClassesToDownload = tempSchoolClassArray
                 self.performSegue(withIdentifier: "searchByListSeg", sender: self)
             case let .failure(error):
                 print("Erorr in fetching classes: \(error)")

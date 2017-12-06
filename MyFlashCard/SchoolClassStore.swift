@@ -58,6 +58,20 @@ public class SchoolClassStore {
         task.resume()
     }
     
+    func fetchClassByDeckid(deckid: String, completion: @escaping (SchoolClassesResult) -> Void) {
+        let url = MyFlashCardAPI.myFlashCardURL(method: .classByDeckid, parameter: deckid)
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        let task = session.dataTask(with: request) {
+            (data, response, error) -> Void in
+            let result = self.processSchoolClassRequest(data: data, error: error)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+        }
+        task.resume()
+    }
+    
     // MARK: - a method to get exisitng classes
     func fetchAllExistingClasses(completion: @escaping (SchoolClassesResult) -> Void) {
         let viewContext = self.persistentContainer.viewContext
