@@ -10,6 +10,8 @@ class CardDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        questionTextView.isEditable = false
+        answerTextView.isEditable = false
         questionTextView.text = questionString
         answerTextView.text = answerString
     }

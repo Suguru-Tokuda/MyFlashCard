@@ -52,8 +52,9 @@ class ClassInfoDownloadViewController: UITableViewController {
             case let .success(decks):
                 print("Successfully found \(decks.count) decks from schoolClassid \(schoolClass.id!)")
                 var tempDeckArray = self.appDelegate.decksToDownload
+                let existingDecks = self.appDelegate.existingDecks
                 for deck in decks {
-                    if tempDeckArray?.contains(deck) == false {
+                    if tempDeckArray?.contains(deck) == false && existingDecks?.contains(deck) == false {
                         tempDeckArray?.append(deck)
                     }
                 }

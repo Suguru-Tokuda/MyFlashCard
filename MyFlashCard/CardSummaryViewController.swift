@@ -20,6 +20,8 @@ class CardSummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.studyCard = appDelegate.studyCard
+        questionTextView.isEditable = false
+        answerTextView.isEditable = false
         questionTextView.text = studyCard.question
         answerTextView.text = studyCard.answer
         

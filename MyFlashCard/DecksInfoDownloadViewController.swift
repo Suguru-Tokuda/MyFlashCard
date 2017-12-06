@@ -73,7 +73,7 @@ class DecksInfoDownloadViewController: UITableViewController {
             case let .success(cards):
                 var tempCardArray = self.appDelegate.cardsToDownload
                 for card in cards {
-                    if tempCardArray?.contains(card) == false {
+                    if tempCardArray?.contains(card) == false  {
                         tempCardArray?.append(card)
                     }
                 }

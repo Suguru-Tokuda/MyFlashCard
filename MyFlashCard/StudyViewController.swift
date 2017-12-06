@@ -29,6 +29,7 @@ class StudyViewController: UIViewController {
         currentCard = cards[0]
         currentIndex = 0
         lastIndex = cards.count - 1
+        textView.isEditable = false
         
         textView.text = currentCard.question
         
